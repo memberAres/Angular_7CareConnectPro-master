@@ -37,7 +37,8 @@ import { BaseComponent } from "../../../../shared/core/base.component";
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: "app-orgmain",
-  templateUrl: "./orgmain.component.html"
+  templateUrl: "./orgmain.component.html",
+  styleUrls: ["./orgmain.component.css"]
 })
 export class OrgMainComponent extends BaseComponent implements OnInit {
   title: string;
@@ -207,6 +208,7 @@ export class OrgMainComponent extends BaseComponent implements OnInit {
           let x: Department[] = data;
           if (x.length > 0) {
             this.companyDepartments = x;
+            console.log(this.companyDepartments);
           }
         },
         (error: any) => {

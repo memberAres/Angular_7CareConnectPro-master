@@ -15,7 +15,7 @@
                         <i class="fa fa-plus-square" (click)="createChatSession()"></i>
                     </div>
             </div>
-            <ul class="chatonline style-none ">
+            <ul class="chatonline style-none " #chat>
               <li *ngFor="let contact of activeChatSessions" [class]="getActiveChatBgColor(contact?.chatId)">
                 <a  (click)="getChatDiscussions(contact?.chatId)"
                    [class.active]="contact?.id === currentContact?.chatId">
@@ -43,7 +43,7 @@
             </div>
           </div>
           <div class="chat-rbox">
-            <ul class="chat-list p-20">
+            <ul class="chat-list p-20" #messagelist>
               <li *ngFor="let discussion of discussions" [class.reverse]="discussion.senderInfo">
                 <div *ngIf="!discussion.senderInfo; else revertChat">
                   <div class="chat-img">

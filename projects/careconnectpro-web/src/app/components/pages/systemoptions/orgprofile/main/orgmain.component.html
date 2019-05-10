@@ -103,8 +103,7 @@
         <div class="col-md-12">
             <ho2-accordion titleName="Locations" [titleClassName]="localstore.getThemeBackground()">
                 <ng-template #body>
-                    <p-dataTable #dtcomplocations [value]="companyAddresses" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                                 [sortField]="sortF" [sortOrder]="sortO" (onSort)="changeSortAddress($event)" selectionMode="single" [(selection)]="selectedAddress"
+                    <p-dataTable #dtcomplocations [value]="companyAddresses" [scrollable]="true" scrollHeight="200px"  selectionMode="single" [(selection)]="selectedAddress"
                                  (onRowSelect)="onRowSelectAddress($event)" dataKey="id"
                                  [loading]="isLoading" loadingIcon="fa-spinner" [responsive]="true" [stacked]="stacked">
                         <p-column class="text-muted" field="address1" header="Address 1" [sortable]="true">
@@ -122,7 +121,6 @@
                         </p-column>
                         <p-footer>
                             <div class="ui-helper-clearfix">
-                                <!--<button class="btn btn-success" type="button" pButton icon="fa-plus" style="float:left" (click)="showAddressDialogToAdd()" label="Add Location"></button>-->
                                 <button class="btn btn-success" type="button" pButton icon="fa fa-fw fa-plus" style="float:left" (click)="routeAddLocation()" label="Add Location"></button>
                             </div>
                         </p-footer>
@@ -136,21 +134,18 @@
         <div class="col-md-12">
             <ho2-accordion titleName="Departments" [titleClassName]="localstore.getThemeBackground()">
                 <ng-template #body>
-                    <p-dataTable #dtdepartments [value]="companyDepartments" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                                 [sortField]="sortF2" [sortOrder]="sortO2" (onSort)="changeSortDept($event)" selectionMode="single" [(selection)]="selectedDepartment"
-                                 (onRowSelect)="onRowSelectDept($event)" dataKey="id"
-                                 [loading]="isLoading" loadingIcon="fa-spinner" [stacked]="stacked">
+                    <p-dataTable [value]="companyDepartments" [scrollable]="true" scrollHeight="200px" selectionMode="single" [(selection)]="selectedDepartment"
+                                 (onRowSelect)="onRowSelectDept($event)" dataKey="id" [responsive]="true" 
+                                 >
                         <p-column field="name" header="Name" [sortable]="true"></p-column>
                         <p-column class="text-muted" field="description" header="Description" [sortable]="true">
                         </p-column>
                         <p-footer>
                             <div class="ui-helper-clearfix" style="width:100%">
-                                <!--<button class="btn btn-success" type="button" pButton icon="fa-plus" style="float:left" (click)="showDeptDialogToAdd()" label="Add Department"></button>-->
                                 <button class="btn btn-success" type="button" pButton icon="fa fa-fw fa-plus" style="float:left" (click)="routeAddDept()" label="Add Department"></button>
                             </div>
                         </p-footer>
                     </p-dataTable>
-
                 </ng-template>
             </ho2-accordion>
         </div>

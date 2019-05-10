@@ -17,12 +17,12 @@ import {
 } from "model-lib";
 
 @Component({
-  selector: "app-display-list",
-  templateUrl: "./display-list.component.html",
-  styleUrls: ["./display-list.component.css"]
+  selector: "app-display-tile",
+  templateUrl: "./display-tile.component.html",
+  styleUrls: ["./display-tile.component.css"]
 })
-export class DisplayListComponent implements OnInit {
-  @Input() lists;
+export class DisplayTileComponent implements OnInit {
+  @Input() list;
   @Input() imguser1;
   @Input() type;
 

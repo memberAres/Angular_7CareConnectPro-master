@@ -12,8 +12,7 @@
         </form>
         <div class="row">
             <div class="col-md">
-                <p-dataTable #dtapproles [value]="appRoles" [globalFilter]="gb" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                             [sortField]="sortF" [sortOrder]="sortO" (onSort)="changeSortRoles($event)" selectionMode="single" [(selection)]="selectedRole" (onRowSelect)="onRowSelectRole($event)" dataKey="id"
+                <p-dataTable #dtapproles [value]="appRoles" [globalFilter]="gb"  [scrollable]="true" scrollHeight="200px" selectionMode="single" [(selection)]="selectedRole" (onRowSelect)="onRowSelectRole($event)" dataKey="id"
                              [responsive]="true" >
                     <p-column class="text-muted" field="name" header="Role" [sortable]="true" [style]="{'text-align':'left'}">
                     </p-column>

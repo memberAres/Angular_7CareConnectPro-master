@@ -1,0 +1,39 @@
+﻿div#card{
+    border-radius: 10px;
+    border-color: #007ad9;
+    border-width: 3px;
+}
+ul{
+    border-radius: 10px;
+    border-color: #007ad9;
+}
+li{
+    min-width: 50px;;
+    padding:10px;
+}
+li:hover{
+    cursor: pointer;
+}
+li#li1{
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+li#li2{
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+li.active{
+    background-color: #007ad9;
+    color:white;
+}
+li{
+    background-color: white;
+}
+li a{
+    width: 100%;
+    height: 100%;
+}
+
+li#li1{
+    border-color:#007ad9;
+}

@@ -75,7 +75,7 @@ export class HomeComponent extends BaseComponent implements AfterViewInit {
         this.apphtmlcontrol.loadAppTheme(this.userSession.theme);
         this.notifyService.notify(
           "success",
-          "Login Successful Ares",
+          "Login Successful",
           "Welcome " + response.fullName
         );
         if (

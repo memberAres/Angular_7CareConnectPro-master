@@ -14,8 +14,7 @@
             </form>
             <div class="row">
                 <div class="col-md">
-                    <p-dataTable #dtapproles [value]="appPermissions"  [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                                 [sortField]="sortF" [sortOrder]="sortO" (onSort)="changeSortPermissions($event)" selectionMode="single" [(selection)]="selectedPermission" (onRowSelect)="onRowSelectPermission($event)" dataKey="id"
+                    <p-dataTable #dtapproles [value]="appPermissions"  [scrollable]="true" scrollHeight="200px" selectionMode="single" [(selection)]="selectedPermission" (onRowSelect)="onRowSelectPermission($event)" dataKey="id"
                                  [responsive]="true" >
                         <p-column class="text-muted" field="assetId" header="Asset" [sortable]="true" [style]="{'text-align':'left'}">
                             <ng-template let-asset="rowData" pTemplate="body">

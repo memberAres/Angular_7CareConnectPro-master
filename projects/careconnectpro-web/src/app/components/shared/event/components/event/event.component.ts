@@ -337,9 +337,9 @@ export class EventComponent extends BaseComponent implements OnInit {
     this.form.setValue({
       id: detail.event.id,
       title: detail.event.title,
-      start_date: detail.event.start.format("wwww-MM-DD"),
+      start_date: detail.event.start.format("YYYY-MM-DD"),
       start_time: detail.event.start_time,
-      end_date: detail.event.end.format("wwww-MM-DD"),
+      end_date: detail.event.end.format("YYYY-MM-DD"),
       end_time: detail.event.end_time,
       description:
         detail.event.description !== null ? detail.event.description : ""

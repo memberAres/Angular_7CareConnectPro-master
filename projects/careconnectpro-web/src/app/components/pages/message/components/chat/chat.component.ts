@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit ,ElementRef, ViewChild} from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import {
   CareConnectLocalStorage,
@@ -49,7 +49,7 @@ export class ChatComponent extends BaseComponent implements OnInit {
   selectedUsers: SelectItem[];
   activeChatId: string;
   chatHeaders: AppChatHeader[] = [];
-
+ 
   /**
    * Method - Constructor
    */
@@ -67,11 +67,9 @@ export class ChatComponent extends BaseComponent implements OnInit {
     this.contacts = Array<ChatContact>();
     this.discussions = Array<ChatDiscussion>();
     this.loginToken = this.localstore.getLoginToken();
-  }
-
-  /**
-   * Method - Life cylce hook - init
-   */
+  } 
+  @ViewChild('messagelist')
+  private myScrollContainer: ElementRef;
   ngOnInit() {
     this.imguser1 = require("../../../../../../assets/images/defaultuserlogo.png");
     this.imgSrc = require("../../../../../../assets/images/defaultcompanylogo.jpg");
@@ -80,6 +78,7 @@ export class ChatComponent extends BaseComponent implements OnInit {
       this.initComponentData();
     }
     this.getLoggedInUserInfo();
+    this.scrollToBottom();
   }
 
   /**
@@ -93,7 +92,14 @@ export class ChatComponent extends BaseComponent implements OnInit {
         this.initComponentData();
       });
   }
-
+private scrollToBottom(): void {
+  if (this.myScrollContainer) {
+    this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+  }
+}
+public ngAfterViewChecked(): void {
+  this.scrollToBottom();
+}
   /**
    * Method - Initialize component data
    */

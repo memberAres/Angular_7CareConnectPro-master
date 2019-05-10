@@ -8,22 +8,6 @@ import { Subscription } from "rxjs/Subscription";
   selector: "app-notifications",
   templateUrl: "./notifications.component.html",
   styleUrls: ["./notifications.component.css"],
-  styles: [`
-        :host ::ng-deep button {
-            margin-right: .25em;
-        }
-
-        :host ::ng-deep .custom-toast .ui-toast-message {
-            color: #ffffff;
-            background: #FC466B;
-            background: -webkit-linear-gradient(to right, #3F5EFB, #FC466B);
-            background: linear-gradient(to right, #3F5EFB, #FC466B);
-        }
-
-        :host ::ng-deep .custom-toast .ui-toast-close-icon {
-            color: black;
-        }
-    `],
   providers: [MessageService]
 })
 export class NotificationsComponent implements OnInit, OnDestroy {
@@ -42,7 +26,6 @@ export class NotificationsComponent implements OnInit, OnDestroy {
   subscribeToNotifications() {
     this.subscription = this.notificationsService.notificationChange.subscribe(
       notification => {
-        this.msgs = [];
         this.messageService.add(notification);
       }
     );
