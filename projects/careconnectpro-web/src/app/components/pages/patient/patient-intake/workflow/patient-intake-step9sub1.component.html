@@ -1,23 +1,23 @@
 ﻿<div class="card-body">
     <div class="container">
         <div class="row">
-            <div class="col-md">
+            <div class="col">
                 <form class="floating-labels m-t-40">
                     <div class="row">
-                        <div class="col-md-4" style="padding-left:0px;">
+                        <div class="col-4" style="padding-left:0px;">
                             <div class="form-group">
                                 <select name="icdSearchType" class="form-control" [(ngModel)]="searchType">
                                     <option *ngFor="let item of icdSearchTypeSelect" [value]="item.value">{{item.label}}</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-4" style="padding-left:0px;">
+                        <div class="col-4" style="padding-left:0px;">
                             <div class="form-group m-b-40">
                                 <input name="txtcondsearch" id="txtcondsearch" [(ngModel)]="searchKey" style="width:100%;" placeholder="Enter Search Keyword..." class="form-control" type="text" pInputText size="50">
                                 <span class="bar"></span>
                             </div>
                         </div>
-                        <div class="col-md-4 col-md-offset-4" style="text-align:left;padding-left:0px;">
+                        <div class="col-4 col-offset-4" style="text-align:left;padding-left:0px;">
                             <div class="form-group">
                                <i style="cursor:pointer" class="fa fa-search" (click)="search()"></i>
                             </div>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md">
+            <div class="col">
                 <p-table [columns]="cols" [value]="healthConditions" [paginator]="true" [rows]="10"
                 selectionMode="multiple" [(selection)]="selectedConditions" dataKey="icdId">
                    <ng-template pTemplate="header" let-columns>                       
@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="row justify-content-center" style="padding-top: 15px">
-            <div class="col-md" style="text-align:right">
+            <div class="col" style="text-align:right">
                 <input class="btn btn-info" type="button" name="Add" value="Add" (click)="add()" />
                 &nbsp;&nbsp;
                 <input class="btn btn-info" type="button" name="Back" value="Back" (click)="returnStep9()" />

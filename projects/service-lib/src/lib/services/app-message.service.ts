@@ -111,37 +111,7 @@ export class AppMessageService extends BaseMethod {
         }),
         catchError(this.handleHttpResponseError$)
       );
-  }
-
-  getMessageDetailById(messageRequest: AppMessageRequest) {
-    var params = JSON.stringify(messageRequest);
-    var headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    return this.http
-      .post(APIUrls.MessageGetMessageDetail, params, { headers: headers })
-      .pipe(
-        map((ret: any) => {
-          var retStatus = <AppMessageDetail>ret.json();
-          return retStatus;
-        }),
-        catchError(this.handleHttpResponseError$)
-      );
-  }
-
-  SendMessage(messageDetail: AppMessageDetail) {
-    var params = JSON.stringify(messageDetail);
-    var headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    return this.http
-      .post(APIUrls.AppMessage, params, { headers: headers })
-      .pipe(
-        map((ret: any) => {
-          var retStatus = ret.json();
-          return retStatus;
-        }),
-        catchError(this.handleHttpResponseError$)
-      );
-  }
+  } 
 
   UpdateMessageReadStatus(messageRequest: AppMessageRequest) {
     var params = JSON.stringify(messageRequest);

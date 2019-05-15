@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { ButtonModule } from "primeng/components/button/button";
 import { GrowlModule } from "primeng/components/growl/growl";
+import { ToastModule } from 'primeng/toast';
 
 import { RadioButtonModule } from "primeng/components/radiobutton/radiobutton";
 import {
@@ -18,8 +19,6 @@ import {
   SidebarModule,
   CheckboxModule
 } from "primeng/primeng";
-// import {ToastModule} from 'primeng/components/toast/toast';
-import {ToastModule} from 'primeng/toast';
 import { CalendarModule } from "primeng/calendar";
 import { LightboxModule } from "primeng/primeng";
 import { TableModule } from "primeng/table";
@@ -32,7 +31,6 @@ import { MultiSelectModule } from "primeng/multiselect";
   exports: [
     ButtonModule,
     GrowlModule,
-    ToastModule,
     RadioButtonModule,
     DataTableModule,
     LightboxModule,
@@ -54,7 +52,8 @@ import { MultiSelectModule } from "primeng/multiselect";
     ChipsModule,
     AutoCompleteModule,
     TooltipModule,
-    MultiSelectModule
+    MultiSelectModule,
+    ToastModule
   ]
 })
 export class AppPrimeNGModule {}

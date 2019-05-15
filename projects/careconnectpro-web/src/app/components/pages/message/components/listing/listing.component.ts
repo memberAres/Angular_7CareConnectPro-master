@@ -34,7 +34,7 @@ export class ListingComponent implements OnInit {
   messageHeaders: AppMessageHeader[];
   userSession: UserSession;
   selectedMessages: string[] = [];
-
+  cols: any[];
   constructor(
     private route: ActivatedRoute,
     private spinnerService: ProgressSpinnerService,
@@ -56,6 +56,12 @@ export class ListingComponent implements OnInit {
     this.messageRequest.recipientId = this.userSession.employeeId;
     this.parseUrlQuery();
     this.getEmployeeNames();
+    this.cols = [
+      { field: 'firstName', header: 'Name' },
+      { field: 'subject', header: 'Subject' },
+      { field: 'fileAttachment', header: 'Attachment' },
+      { field: 'dateCreated', header: 'Date' }
+  ];
   }
 
   /**
@@ -162,11 +168,14 @@ export class ListingComponent implements OnInit {
    */
   getEmployeePhoto(employeeId: string) {
     let ret: string = "";
-    const x = this.employeeService.employeeNames.findIndex(
-      y => y.id === employeeId
-    );
-    if (x > -1) {
-      ret = this.employeeService.employeeNames[x].photoName;
+    const empNames = this.employeeService.getEmployeeNames();
+    if (!!empNames) {
+      const x = empNames.findIndex(
+        y => y.id === employeeId
+      );
+      if (x > -1) {
+        ret = empNames[x].photoName;
+      }
     }
     return ret;
   }
@@ -214,7 +223,7 @@ export class ListingComponent implements OnInit {
     let appRequests: AppMessageRequest[] = [];
 
     this.selectedMessages.forEach(mesg => {
-      let singleReq: AppMessageRequest;
+      let singleReq: AppMessageRequest = {};
       singleReq.id = mesg;
       singleReq.mailboxId = this.messageRequest.mailboxId;
       singleReq.recipientId = this.messageRequest.recipientId;

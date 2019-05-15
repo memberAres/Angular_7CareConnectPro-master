@@ -1,7 +1,8 @@
-div#card{
+div.btn{
     border-radius: 10px;
     border-color: #007ad9;
     border-width: 3px;
+    padding: 0px;
 }
 ul.tile_list{
     border-radius: 10px;
@@ -38,3 +39,6 @@ ul.tile_list li#li1{
     border-color:#007ad9;
     /* border-width:  */
 }
+.app-ho2-form-label{
+    padding-top: 5px;
+  }

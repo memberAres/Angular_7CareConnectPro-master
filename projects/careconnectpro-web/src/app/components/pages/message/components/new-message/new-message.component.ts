@@ -15,7 +15,8 @@ import {
   AuthService,
   NotificationsService,
   EmployeeService,
-  MediaService
+  MediaService,
+  DataService
 } from "service-lib";
 import { Router } from "@angular/router";
 import { DropzoneConfigInterface } from "ngx-dropzone-wrapper";
@@ -25,15 +26,15 @@ import { DropzoneConfigInterface } from "ngx-dropzone-wrapper";
   templateUrl: "./new-message.component.html"
 })
 export class NewMessageComponent implements OnInit {
-  userSession: UserSession;
-  appUserMessage: AppMessageDetail;
+  userSession: UserSession = {};
+  appUserMessage: AppMessageDetail = {};
   form: FormGroup;
   files = Array<any>();
   originalMessageId: string; // type message ex : inbox ..
   responseType: string;
   recipients: string[] = [];
-  employeeNames: EmployeeName[];
-  activeMessageDetail: AppMessageDetail;
+  employeeNames: EmployeeName[] = [];
+  activeMessageDetail: AppMessageDetail = {};
   emailToNames: string[] = [];
   availEmployeeNames: string[] = [];
   mediaurl: string;
@@ -60,7 +61,8 @@ export class NewMessageComponent implements OnInit {
     private notifyService: NotificationsService,
     private router: Router,
     private employeeService: EmployeeService,
-    private mediaService: MediaService
+    private mediaService: MediaService,
+    private dataService: DataService
   ) {
     this.form = this.createFormGroup();
     this.responseType = activatedRoute.snapshot.data.responseType;
@@ -322,21 +324,23 @@ export class NewMessageComponent implements OnInit {
     this.appUserMessage.recipients = this.recipients;
 
     this.spinnerService.show();
-    let ret = this.appMessageService
-      .SendMessage(this.appUserMessage)
+    this.dataService
+      .postData(this.appUserMessage, 
+        APIUrls.AppMessage)
       .finally(() => {
         this.spinnerService.hide();
       })
       .subscribe(
         data => {
           let ret: any = data;
-          //this.router.navigate(['home/message/mail/draft']);
         },
         error => {
           this.notifyService.notify(
             "error",
             "Message Error",
-            Message.SendMessageFailedGeneralError
+            Message.ErrorSaveDatabaseRecordFailed +
+              " message id:" +
+              this.appUserMessage.id
           );
         }
       );
@@ -370,8 +374,9 @@ export class NewMessageComponent implements OnInit {
     this.appUserMessage.recipients = this.recipients;
 
     this.spinnerService.show();
-    let ret = this.appMessageService
-      .SendMessage(this.appUserMessage)
+    this.dataService
+      .postData(this.appUserMessage, 
+        APIUrls.AppMessage)
       .finally(() => {
         this.spinnerService.hide();
       })
@@ -381,6 +386,11 @@ export class NewMessageComponent implements OnInit {
           if (this.appUserMessage.fileAttachments != undefined) {
             this.saveAttachment();
           } else {
+            this.notifyService.notify(
+              "success",
+              "Message",
+              "Email sent successful"
+            );
             this.router.navigate(["home/message/mail/inbox"]);
           }
         },
@@ -388,7 +398,9 @@ export class NewMessageComponent implements OnInit {
           this.notifyService.notify(
             "error",
             "Message Error",
-            Message.SendMessageFailedGeneralError
+            Message.ErrorSaveDatabaseRecordFailed +
+              " message id:" +
+              this.appUserMessage.id
           );
         }
       );
@@ -400,7 +412,6 @@ export class NewMessageComponent implements OnInit {
         return value.id;
       }
     );
-
     this.spinnerService.show();
     let ret = this.mediaService
       .mediaAttachmentSave(this.userSession.companyId, fileAttachments)
@@ -439,7 +450,7 @@ export class NewMessageComponent implements OnInit {
     const fileId: string = event[1];
     const origFileName: string = event[0].name;
     const tmpfileSize: string = event[0].size;
-    if (this.appUserMessage.fileAttachments === undefined) {
+    if ( typeof(this.appUserMessage.fileAttachments) === "undefined") {
       this.appUserMessage.fileAttachments = [];
     }
     this.appUserMessage.fileAttachments.push({

@@ -24,11 +24,11 @@
             <ho2edithelper activeAction="0" showDelete="false" (actionSelected)="editEventSubmit($event)" [saveStatus]="saveStatus"></ho2edithelper>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 app-ho2-form-label">
+    <div class="row justify-content-center">
+        <div class="col-4 app-ho2-form-label">
             <label for="prefix" class="app-ho2-form-label">Prefix:</label>
         </div>
-        <div class="col-md-7 floating-labels">
+        <div class="col-7 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="prefix" class="form-control" [(ngModel)]="physicianService.physician.prefix">
                     <option *ngFor="let item of prefixCodesSelect" [value]="item.value">{{item.label}}</option>
@@ -39,11 +39,11 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 app-ho2-form-label">
+    <div class="row justify-content-center">
+        <div class="col-4 app-ho2-form-label">
             <label for="firstName" class="app-ho2-form-label">First Name:</label>
         </div>
-        <div class="col-md-7 floating-labels">
+        <div class="col-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter physician first name" name="firstName" id="firstName" required [(ngModel)]="physicianService.physician.firstName" #firstName="ngModel">
                 <span class="bar"></span>
@@ -59,11 +59,11 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 app-ho2-form-label">
+    <div class="row justify-content-center">
+        <div class="col-4 app-ho2-form-label">
             <label for="lastName" class="app-ho2-form-label">Last Name:</label>
         </div>
-        <div class="col-md-7 floating-labels">
+        <div class="col-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter physician last name" name="lastName" id="lastName" required [(ngModel)]="physicianService.physician.lastName" #lastName="ngModel">
                 <span class="bar"></span>
@@ -79,11 +79,11 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 app-ho2-form-label">
+    <div class="row justify-content-center">
+        <div class="col-4 app-ho2-form-label">
             <label for="suffixCodes" class="app-ho2-form-label">Suffix:</label>
         </div>
-        <div class="col-md-7 floating-labels">
+        <div class="col-7 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="suffixCodes" class="form-control" [(ngModel)]="physicianService.physician.suffix">
                     <option *ngFor="let item of suffixCodesSelect" [value]="item.value">{{item.label}}</option>
@@ -94,11 +94,11 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 app-ho2-form-label">
+    <div class="row justify-content-center">
+        <div class="col-4 app-ho2-form-label">
             <label for="genderCodes" class="app-ho2-form-label">Gender:</label>
         </div>
-        <div class="col-md-7 floating-labels">
+        <div class="col-7 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="genderCodes" class="form-control" [(ngModel)]="physicianService.physician.gender">
                     <option *ngFor="let item of genderCodesSelect" [value]="item.value">{{item.label}}</option>
@@ -109,11 +109,11 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 app-ho2-form-label">
+    <div class="row justify-content-center">
+        <div class="col-4 app-ho2-form-label">
             <label for="npinum" class="app-ho2-form-label">Npi:</label>
         </div>
-        <div class="col-md-7 floating-labels">
+        <div class="col-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter physician Npi number" name="npinum" id="npinum" required [(ngModel)]="physicianService.physician.npi" #npinum="ngModel">
                 <span class="bar"></span>
@@ -129,11 +129,11 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 app-ho2-form-label">
+    <div class="row justify-content-center">
+        <div class="col-4 app-ho2-form-label">
             <label for="licenseid" class="app-ho2-form-label">License Id:</label>
         </div>
-        <div class="col-md-7 floating-labels">
+        <div class="col-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter physician license number" name="licenseid" id="licenseid" required [(ngModel)]="physicianService.physician.licenseId" #licenseid="ngModel">
                 <span class="bar"></span>
@@ -149,11 +149,11 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 app-ho2-form-label">
+    <div class="row justify-content-center">
+        <div class="col-4 app-ho2-form-label">
             <label for="fedtaxid" class="app-ho2-form-label">Federal Tax Id:</label>
         </div>
-        <div class="col-md-7 floating-labels">
+        <div class="col-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter federal tax id" name="fedtaxid" id="fedtaxid" required [(ngModel)]="physicianService.physician.fedTaxId" #fedtaxid="ngModel">
                 <span class="bar"></span>
@@ -169,11 +169,11 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 app-ho2-form-label">
+    <div class="row justify-content-center">
+        <div class="col-4 app-ho2-form-label">
             <label for="jobtitle" class="app-ho2-form-label">Job Title:</label>
         </div>
-        <div class="col-md-7 floating-labels">
+        <div class="col-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter physician job title" name="jobtitle" id="jobtitle" required [(ngModel)]="physicianService.physician.jobTitle" #jobtitle="ngModel">
                 <span class="bar"></span>

@@ -24,7 +24,7 @@ export class ListingComponent extends BaseComponent implements OnInit {
   broadcasts: SystemBroadcastHeader[] = [];
   selectedBroadcast: SystemBroadcastHeader[] = [];
   userSession: UserSession;
-
+  cols: any[];
   constructor(
     private employeeService: EmployeeService,
     private spinnerService: ProgressSpinnerService,
@@ -45,6 +45,11 @@ export class ListingComponent extends BaseComponent implements OnInit {
       this.initComponentData();
     }
     this.getLoggedInUserInfo();
+    this.cols = [
+      { field: 'firstName', header: 'Name' },
+      { field: 'subject', header: 'Subject' },
+      { field: 'dateCreated', header: 'Date' }
+  ];
   }
 
   /**

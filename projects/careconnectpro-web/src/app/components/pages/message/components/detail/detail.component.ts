@@ -15,7 +15,8 @@ import {
   AppMessageService,
   ProgressSpinnerService,
   EmployeeService,
-  MediaService
+  MediaService,
+  DataService
 } from "service-lib";
 import { Router, ActivatedRoute } from "@angular/router";
 
@@ -44,7 +45,8 @@ export class DetailComponent implements OnInit {
     private router: Router,
     private employeeService: EmployeeService,
     private route: ActivatedRoute,
-    private mediaSvc: MediaService
+    private mediaSvc: MediaService,
+    private dataService: DataService
   ) {}
 
   ngOnInit() {
@@ -88,8 +90,9 @@ export class DetailComponent implements OnInit {
 
   getMessage() {
     this.spinnerService.show();
-    let ret = this.appMessageService
-      .getMessageDetailById(this.messageRequest)
+    this.dataService
+      .postData(this.messageRequest, 
+        APIUrls.MessageGetMessageDetail)
       .finally(() => {
         this.spinnerService.hide();
       })
@@ -104,7 +107,13 @@ export class DetailComponent implements OnInit {
           }
         },
         error => {
-          console.log(Message.ErrorGetMessageDetailFailure);
+          this.notifyService.notify(
+            "error",
+            "Message Error",
+            Message.ErrorGetDatabaseRecordFailed +
+              " message id:" +
+              this.messageRequest.id
+          );
         }
       );
   }
@@ -196,14 +205,20 @@ export class DetailComponent implements OnInit {
     return fileUrl;
   }
 
+  /**
+   * Method - Retrieve employee names from service
+   */
   findEmployeeName(employeeId: string) {
     let ret: string = "N/A";
-    const x = this.employeeService.employeeNames.findIndex(
-      y => y.id === employeeId
-    );
-    if (x > -1) {
-      ret = this.employeeService.employeeNames[x].name;
-    }
+    const empNames = this.employeeService.getEmployeeNames();
+if (!!empNames) {
+  const x = empNames.findIndex(
+    y => y.id === employeeId
+  );
+  if (x > -1) {
+    ret = empNames[x].name;
+  }
+}
     return ret;
   }
 

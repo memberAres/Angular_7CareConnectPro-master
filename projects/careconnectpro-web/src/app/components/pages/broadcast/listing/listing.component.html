@@ -8,7 +8,7 @@
                class="btn btn-danger m-b-10 p-10 m-r-10 waves-effect waves-light">Compose</a>
           </div>
           <div class="card-body p-t-0">
-            <div class="card b-all shadow-none">
+            <!-- <div class="card b-all shadow-none">
               <div class="inbox-center table-responsive">
                 <table class="table table-hover no-wrap">
                   <tbody>
@@ -37,8 +37,44 @@
                   </tbody>
                 </table>
               </div>
-            </div>
+            </div> -->
+            <p-table [columns]="cols" [value]="broadcasts" [scrollable]="true" 
+            [responsive]="true" scrollHeight="200px">
+
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th style="width: 3em"></th>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        {{col.header}}
+                        <p-sortIcon [field]="col.field"></p-sortIcon>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr class="unread" *ngFor="let item of broadcasts; let i = index">
+                    <td style="width:40px">
+                      <div class="checkbox">
+                        <input type="checkbox" id="{{'checkbox'+i}}" value="check" (change)="onChangeCheckbox(item.id)">
+                        <label for="{{'checkbox'+i}}"></label>
+                      </div>
+                    </td>
+                    <td class="max-texts" (click)="viewMessage(item.id)" style="cursor: pointer">
+                        <a [routerLink]="['/home/broadcast/detail/',item.id]">
+                      <img [src]="getEmployeeImage(item.senderId)" alt="user" width="20"
+                           class="img-circle"/>
+                      {{ getEmployeeFullName(item.senderId) }}
+                      </a>
+                    </td>
+                    <td class="max-texts"><a [routerLink]="['/home/broadcast/detail/',item.id]">
+                      <span>{{item.subject}}</span>
+                    </a>
+                    </td>
+                    <td class="max-texts"> {{ formatDate(item.dateCreated) }} </td>
+                  </tr>
+            </ng-template> 
+        </p-table>
           </div>
+         
         </div>
       </div>
     </div>

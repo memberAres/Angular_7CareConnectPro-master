@@ -25,7 +25,7 @@ export class DisplayListComponent implements OnInit {
   @Input() lists;
   @Input() imguser1;
   @Input() type;
-
+  cols: any[];
   constructor(
     public employeeService: EmployeeService,
     private physicianService: PhysicianService,
@@ -36,6 +36,10 @@ export class DisplayListComponent implements OnInit {
 
   ngOnInit() {
     this.physicianService.physician.isActive = true;
+    this.cols = [
+      { field: 'firstName', header: 'Name' },
+      { field: 'jobTitle', header: 'Title' }
+  ];
   }
 
   getEmployeeImg(imgName: any): any {

@@ -1,7 +1,8 @@
-div#card{
+div.btn{
     border-radius: 10px;
     border-color: #007ad9;
     border-width: 3px;
+    padding: 0px;
 }
 ul{
     border-radius: 10px;
