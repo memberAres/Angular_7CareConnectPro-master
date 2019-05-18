@@ -57,11 +57,11 @@ export class ListingComponent implements OnInit {
     this.parseUrlQuery();
     this.getEmployeeNames();
     this.cols = [
-      { field: 'firstName', header: 'Name' },
-      { field: 'subject', header: 'Subject' },
-      { field: 'fileAttachment', header: 'Attachment' },
-      { field: 'dateCreated', header: 'Date' }
-  ];
+      { field: "firstName", header: "Name" },
+      { field: "subject", header: "Subject" },
+      { field: "fileAttachment", header: "Attachment" },
+      { field: "dateCreated", header: "Date" }
+    ];
   }
 
   /**
@@ -79,19 +79,18 @@ export class ListingComponent implements OnInit {
    * @param dateIn
    */
   formatDate(dateIn: Date) {
-    let dayFormat = require('dateformat');
+    let dayFormat = require("dateformat");
     let now = new Date();
     let currentmd = dayFormat(now, "mmmm dS");
     let currentyear = dayFormat(now, "yyyy");
     let dateFormat = require("dateformat");
     let messagemd = dateFormat(dateIn, "mmmm dS");
     let messageyear = dateFormat(dateIn, "yyyy");
-    if (currentmd==messagemd&&currentyear==messageyear) {
+    if (currentmd == messagemd && currentyear == messageyear) {
       return dateFormat(dateIn, "h:MM:ss TT");
     } else {
       return dateFormat(dateIn, "dddd, mmmm dS, yyyy, h:MM:ss TT");
     }
-    
   }
 
   /**
@@ -170,9 +169,7 @@ export class ListingComponent implements OnInit {
     let ret: string = "";
     const empNames = this.employeeService.getEmployeeNames();
     if (!!empNames) {
-      const x = empNames.findIndex(
-        y => y.id === employeeId
-      );
+      const x = empNames.findIndex(y => y.id === employeeId);
       if (x > -1) {
         ret = empNames[x].photoName;
       }

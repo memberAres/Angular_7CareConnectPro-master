@@ -325,8 +325,7 @@ export class NewMessageComponent implements OnInit {
 
     this.spinnerService.show();
     this.dataService
-      .postData(this.appUserMessage, 
-        APIUrls.AppMessage)
+      .postData(this.appUserMessage, APIUrls.AppMessage)
       .finally(() => {
         this.spinnerService.hide();
       })
@@ -375,8 +374,7 @@ export class NewMessageComponent implements OnInit {
 
     this.spinnerService.show();
     this.dataService
-      .postData(this.appUserMessage, 
-        APIUrls.AppMessage)
+      .postData(this.appUserMessage, APIUrls.AppMessage)
       .finally(() => {
         this.spinnerService.hide();
       })
@@ -450,7 +448,7 @@ export class NewMessageComponent implements OnInit {
     const fileId: string = event[1];
     const origFileName: string = event[0].name;
     const tmpfileSize: string = event[0].size;
-    if ( typeof(this.appUserMessage.fileAttachments) === "undefined") {
+    if (typeof this.appUserMessage.fileAttachments === "undefined") {
       this.appUserMessage.fileAttachments = [];
     }
     this.appUserMessage.fileAttachments.push({

@@ -37,7 +37,7 @@ import { SelectItem } from "primeng/api";
 import { Router } from "@angular/router";
 import { BaseComponent } from "../../../../shared/core";
 import { takeUntil } from "rxjs/operators";
-import { Subject } from 'rxjs';
+import { Subject } from "rxjs";
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -116,9 +116,9 @@ export class PatientInTakeStep3Component extends BaseComponent
         this.getPatientRelative();
       });
 
-      this.updateStatus.subscribe(data => {
-        this.isEditMode = false;
-      });
+    this.updateStatus.subscribe(data => {
+      this.isEditMode = false;
+    });
 
     this.getPrefixCodes();
     this.getSuffixCodes();
@@ -126,8 +126,7 @@ export class PatientInTakeStep3Component extends BaseComponent
     this.getPatientRelative();
   }
 
-
-   /**
+  /**
    * Method - Retrieve relationship codes and others
    */
   getSupplementaryCodes() {

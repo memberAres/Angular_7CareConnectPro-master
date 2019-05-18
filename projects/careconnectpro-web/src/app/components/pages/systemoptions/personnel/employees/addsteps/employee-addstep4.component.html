@@ -1,48 +1,52 @@
 ﻿<form novalidate="" #f2="ngForm" (ngSubmit)="f2.form.valid ? submitForm(): ''" class="m-t-40 tab-wizard wizard-circle wizard clearfix" role="application" id="f1">
     <div class="row" *ngIf="isNewRecord === false">
-        <div class="col-md-3 app-ho2-form-label">
+            <div class="col-8 app-ho2-form-label">
+            </div>
+            <div class="col-4 app-ho2-edit-right">
+                <ho2edithelper activeAction="0" showDelete="false" (actionSelected)="editEventSubmit($event)" [saveStatus]="saveStatus"></ho2edithelper>
+            </div>
         </div>
-        <div class="col-md-8 app-ho2-edit-right">
-            <ho2edithelper activeAction="0" (actionSelected)="editEventSubmit($event)" [saveStatus]="saveStatus"></ho2edithelper>
-        </div>
-    </div>
     <div class="row">
-        <div class="col-md-4 col-md-6-leftside">
+        <div class="col-12 col-sm-4 col-md-6-leftside">
             <div class="form-group m-b-40">
-                <label class="col-md-4-label">Profile Picture:</label>
+                <label class="col-12-label">Profile Picture:</label>
             </div>
         </div>
-        <div class="col-md-4 col-md-6-leftside">
-            <div *ngIf="((isEditMode === false) && (isNewRecord === false))" style="text-align:left">
-                <img class="img-circle" [src]="getEmployeeImg(employeeService.employee.photoName)" alt="Profile Picture" width="120" height="100">
-            </div>
-            <div *ngIf="isEditMode">
-                <div class="form-group m-b-40">
-                    <p-fileUpload name="profilePics[]" chooseLabel="Upload New Picture" url="{{ mediaurl }}" (onUpload)="onUpload($event)"
-                                  auto="auto" accept="image/*" maxFileSize="2000000">
-                        <ng-template pTemplate="content" name="profileTemplate">
-                            <div *ngIf="tempImgFile !=''" class="col-lg-3 col-md-6" style="width:40%;">
-                                <div class="el-card-item">
-                                    <div class="el-card-avatar el-overlay-1">
-                                        <img class="img-circle" src="{{ tempImgFile }}" alt="Profile Picture" width="120" height="100">
+    <!-- </div>
+        <div class="row justify-content:center"> -->
+            <div class="col-12 col-sm-4 col-md-6-leftside">
+                <div *ngIf="((isEditMode === false) && (isNewRecord === false))" style="text-align:center">
+                    <img class="img-circle" [src]="getEmployeeImg(employeeService.employee.photoName)" alt="Profile Picture" width="120" height="100">
+                </div>
+                <div *ngIf="isEditMode">
+                    <div class="form-group m-b-40" style="text-align:center">
+                        <p-fileUpload name="profilePics[]" chooseLabel="Upload New Picture" url="{{ mediaurl }}" (onUpload)="onUpload($event)"
+                                        auto="auto" accept="image/*" maxFileSize="2000000">
+                            <ng-template pTemplate="content" name="profileTemplate">
+                                <div *ngIf="tempImgFile !=''" class="col-lg-3 col-md-6" style="width:40%;">
+                                    <div class="el-card-item">
+                                        <div class="el-card-avatar el-overlay-1">
+                                            <img class="img-circle" src="{{ tempImgFile }}" alt="Profile Picture" width="120" height="100">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </ng-template>
-                    </p-fileUpload>
-                    <span class="bar"></span>
+                            </ng-template>
+                        </p-fileUpload>
+                        <span class="bar"></span>
+                    </div>
                 </div>
-           </div>
-            </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4 col-md-6-leftside">
-            <div class="form-group m-b-40">
-                <label class="col-md-4-label">User Theme:</label>
             </div>
         </div>
-        <div class="col-md-4 col-md-6-leftside">
+        
+    
+
+    <div class="row">
+        <div class="col-12 col-sm-4 col-md-6-leftside">
+            <div class="form-group m-b-40">
+                <label class="col-12-label">User Theme:</label>
+            </div>
+        </div>
+        <div class="col-12 col-sm-4 col-md-6-leftside">
             <div class="form-group m-b-40">
                 <ul id="themecolors" class="m-t-20">
                     <li><b>With Light sidebar</b></li>
@@ -64,12 +68,12 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4 col-md-6-leftside">
+        <div class="col-12 col-sm-4 col-md-6-leftside">
             <div class="form-group m-b-40">
-                <label class="col-md-4-label">About me:</label>
+                <label class="col-12-label">About me:</label>
             </div>
         </div>
-        <div class="col-md-8 col-md-6-leftside">
+        <div class="col-12 col-sm-8 col-md-6-leftside">
             <div *ngIf="isEditMode">
                 <div class="form-group m-b-40">
                     <textarea pInputTextarea [(ngModel)]="employeeService.employee.biography" [rows]="4" [cols]="80" style="font-size:12px; width:100%;" name="txtbiography"></textarea>
@@ -81,8 +85,8 @@
             </div>
         </div>
     </div>
-    <div class="row" *ngIf="isNewRecord === true">
-        <div class="col-md" style="text-align:right">
+    <div class="row" *ngIf="isNewRecord === true" style="padding-top:20px;">
+        <div class="col-sm">
             <input class="btn btn-info" type="button" name="Back" value="Cancel" (click)="cancel()" />
             &nbsp;&nbsp;
             <input class="btn btn-info" type="button" name="Back" value="Back" (click)="goToPrev()" />

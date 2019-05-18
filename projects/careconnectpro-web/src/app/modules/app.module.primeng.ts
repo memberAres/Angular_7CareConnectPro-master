@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { ButtonModule } from "primeng/components/button/button";
 import { GrowlModule } from "primeng/components/growl/growl";
-import { ToastModule } from 'primeng/toast';
+import { ToastModule } from "primeng/toast";
 
 import { RadioButtonModule } from "primeng/components/radiobutton/radiobutton";
 import {

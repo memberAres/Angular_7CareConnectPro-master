@@ -1,17 +1,18 @@
 ﻿<form novalidate="" #f2="ngForm" (ngSubmit)="f2.form.valid ? submitForm(): ''" class="m-t-40 tab-wizard wizard-circle wizard clearfix" role="application" id="f1">
-
-    <div class="row justify-content-center" *ngIf="isNewRecord === false">
-        <div class="col-3 app-ho2-form-label">
+    <div class="row" *ngIf="isNewRecord === false">
+        <div class="col-7 app-ho2-form-label">
         </div>
-        <div class="col-8 app-ho2-edit-right">
-            <ho2edithelper activeAction="0" showDelete="false" (actionSelected)="editEventSubmit($event)" [saveStatus]="saveStatus"></ho2edithelper>
+        <div class="col-5">
+            <div *ngIf="isNewRecord === false" class="col-md app-ho2-edit-right">
+                <ho2edithelper activeAction="0" showDelete="false" (actionSelected)="editEventSubmit($event)" [saveStatus]="saveStatus"></ho2edithelper>
+            </div>
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="companyname" class="app-ho2-form-label">Company Name:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter company name" name="companyname" id="companyname" required [(ngModel)]="employer.name" #companyname="ngModel">
                 <span class="bar"></span>
@@ -28,10 +29,10 @@
         </div>
     </div>
      <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="phone" class="app-ho2-form-label">Phone:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter company phone" name="phone" id="phone" required [(ngModel)]="employerWorkPhone" #phone="ngModel">
                 <span class="bar"></span>
@@ -48,10 +49,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="faxno" class="app-ho2-form-label">Fax:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter company fax number" name="faxno" id="faxno" [(ngModel)]="employerFaxPhone" #faxno="ngModel">
                 <span class="bar"></span>
@@ -62,10 +63,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="compemail" class="app-ho2-form-label">Email:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter company email address" name="compemail" id="compemail" [(ngModel)]="employerEmail" #compemail="ngModel">
                 <span class="bar"></span>
@@ -76,10 +77,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="address1" class="app-ho2-form-label">Address 1:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter Address 1" name="address1" id="address1" required [(ngModel)]="employerAddress.address1" #address1="ngModel">
                 <span class="bar"></span>
@@ -96,10 +97,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="address2" class="app-ho2-form-label">Address 2:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter Address 2" name="address2" id="address2" [(ngModel)]="employerAddress.address2" #address2="ngModel">
                 <span class="bar"></span>
@@ -110,10 +111,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="address3" class="app-ho2-form-label">Address 3:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter Address 3" name="address3" id="address3" [(ngModel)]="employerAddress.address3" #address3="ngModel">
                 <span class="bar"></span>
@@ -124,10 +125,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="city" class="app-ho2-form-label">City:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter City" required name="city" id="city" [(ngModel)]="employerAddress.city" #city="ngModel">
                 <span class="bar"></span>
@@ -144,10 +145,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="usStates" class="app-ho2-form-label">State:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="usStates" class="form-control" [(ngModel)]="employerAddress.state" required>
                     <option *ngFor="let item of usStateSelect" [value]="item.value">{{item.label}}</option>
@@ -159,10 +160,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="city" class="app-ho2-form-label">Zip Code:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter Zip Code" required name="zipcode" id="zipcode" [(ngModel)]="employerAddress.zipCode" #zipcode="ngModel">
                 <span class="bar"></span>
@@ -178,9 +179,8 @@
             </div>
         </div>
     </div>
-
     <div class="row justify-content-center" *ngIf="isNewRecord === true" style="padding-top: 15px">
-        <div class="col" style="text-align:right">
+        <div class="col-sm">
             <input class="btn btn-info" type="button" name="Cancel" value="Cancel" (click)="cancel()" />
             &nbsp;&nbsp;
             <input class="btn btn-info" type="button" name="Back" value="Back" (click)="goToPrev()" />

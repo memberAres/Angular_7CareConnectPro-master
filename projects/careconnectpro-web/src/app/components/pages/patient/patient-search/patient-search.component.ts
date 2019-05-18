@@ -92,8 +92,8 @@ export class PatientSearchComponent extends BaseComponent
     this.getViewTypes();
     this.getStatusDropDownWidth();
     this.getAllPatients();
-    var a = document.getElementById('a1');
-    a.style.color = 'white';
+    var a = document.getElementById("a1");
+    a.style.color = "white";
   }
 
   /**
@@ -102,24 +102,24 @@ export class PatientSearchComponent extends BaseComponent
   public Showtile() {
     this.tabView = 1;
     var d1 = document.getElementById("li1");
-    d1.style.backgroundColor = '#007ad9';
+    d1.style.backgroundColor = "#007ad9";
     var d2 = document.getElementById("li2");
-    d2.style.backgroundColor = 'white';
-    var a1 = document.getElementById('a1');
-    a1.style.color = 'white';
-    var a2 = document.getElementById('a2');
-    a2.style.color = '#007ad9';
+    d2.style.backgroundColor = "white";
+    var a1 = document.getElementById("a1");
+    a1.style.color = "white";
+    var a2 = document.getElementById("a2");
+    a2.style.color = "#007ad9";
   }
   public Showlist() {
     this.tabView = 2;
     var d1 = document.getElementById("li2");
-    d1.style.backgroundColor = '#007ad9';
+    d1.style.backgroundColor = "#007ad9";
     var d2 = document.getElementById("li1");
-    d2.style.backgroundColor = 'white';
-    var a2 = document.getElementById('a2');
-    a2.style.color = 'white';
-    var a1 = document.getElementById('a1');
-    a1.style.color = '#007ad9';
+    d2.style.backgroundColor = "white";
+    var a2 = document.getElementById("a2");
+    a2.style.color = "white";
+    var a1 = document.getElementById("a1");
+    a1.style.color = "#007ad9";
   }
   getLoggedInUserInfo() {
     this.authService.userSessionSubject

@@ -30,7 +30,7 @@ import { Address } from "projects/model-lib/src/lib/models";
 import { AddressType } from "projects/model-lib/src/lib/enums";
 import { BaseComponent } from "../../../../shared/core";
 import { takeUntil } from "rxjs/operators";
-import { Subject } from 'rxjs';
+import { Subject } from "rxjs";
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -87,14 +87,13 @@ export class PatientInTakeStep2Component extends BaseComponent
         this.getPatient();
       });
 
-      this.updateStatus.subscribe(data => {
-        this.isEditMode = false;
-      });
+    this.updateStatus.subscribe(data => {
+      this.isEditMode = false;
+    });
     this.states = AddressCodes.USStates;
     this.populateStateDropDown();
     this.getPatient();
   }
-
 
   /**
    * Method - Life cycle hook - after view initialization

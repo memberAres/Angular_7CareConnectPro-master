@@ -34,7 +34,7 @@ import {
 } from "@angular/forms";
 import { SelectItem } from "primeng/api";
 import { Router } from "@angular/router";
-import { Subject } from 'rxjs';
+import { Subject } from "rxjs";
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -95,7 +95,6 @@ export class PatientInTakeStep9Sub2Component implements OnInit, AfterViewInit {
     this.populateStateDropDown();
     this.getAppAllergies();
   }
-
 
   ngAfterViewInit() {
     this.spinnerService.hide();

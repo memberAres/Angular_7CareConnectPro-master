@@ -41,7 +41,7 @@ import {
 import { SelectItem } from "primeng/api";
 import { Router } from "@angular/router";
 import { Checkbox } from "primeng/primeng";
-import { Subject } from 'rxjs';
+import { Subject } from "rxjs";
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -117,7 +117,6 @@ export class PatientInTakeStep9Sub1Component implements OnInit, AfterViewInit {
       this.isEditMode = false;
     });
   }
-
 
   ngAfterViewInit() {
     this.spinnerService.hide();

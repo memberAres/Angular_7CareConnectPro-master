@@ -1,0 +1,25 @@
+
+/* @media screen and (max-width: 575px){
+    .app-ho2-form-label{
+      text-align: left;
+    }
+  } */
+  /* @media screen and (max-width: 575px){
+    .btn-group{
+      text-align: center;
+    }
+    
+  }
+  @media screen and (min-width: 575px){
+    .btn-group{
+      text-align: right;
+    }
+    .app-ho2-form-label{
+      text-align:left;
+    }
+  } */
+  @media screen and (max-width: 575px){
+    .app-ho2-form-label{
+      text-align: left;
+    }
+  }

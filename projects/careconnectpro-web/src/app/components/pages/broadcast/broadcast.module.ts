@@ -9,7 +9,7 @@ import { routes } from "./broadcast.routing";
 
 @NgModule({
   declarations: [ListingComponent, NewMessageComponent, DetailComponent],
-  imports: [routes, CommonModule, SharedModule,TableModule],
+  imports: [routes, CommonModule, SharedModule, TableModule],
   providers: [],
   bootstrap: [],
   exports: []

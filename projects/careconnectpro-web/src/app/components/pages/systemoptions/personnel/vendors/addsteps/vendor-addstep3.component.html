@@ -1,19 +1,25 @@
 ﻿<form novalidate="" #f2="ngForm" (ngSubmit)="f2.form.valid ? submitForm(): ''" class="m-t-40 tab-wizard wizard-circle wizard clearfix" role="application" id="f1">
     <div class="row" *ngIf="isNewRecord === false">
-        <div class="col-md-3 app-ho2-form-label">
+        <div class="col-7 app-ho2-form-label">
         </div>
-        <div class="col-md-8 app-ho2-edit-right">
-            <ho2edithelper activeAction="0" (actionSelected)="editEventSubmit($event)" [saveStatus]="saveStatus"></ho2edithelper>
+        <div class="col-5">
+            <div *ngIf="isNewRecord === false" class="col-md app-ho2-edit-right">
+                <ho2edithelper activeAction="0" showDelete="false" (actionSelected)="editEventSubmit($event)" [saveStatus]="saveStatus"></ho2edithelper>
+            </div>
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-md floating-labels">
             <div *ngIf="isEditMode">
                 <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
-                    <table class="primary-bordered-table">                        <tr>
+                    <table class="primary-bordered-table">                        
+                        <tr>
                             <td colspan="2">
                                 <input style="width:100%;" class="form-control" name="tempService" [(ngModel)]="tempService" type="text" pInputText size="50" (keyup)="validateServiceInputText($event)">
                             </td>
+                            
+                        </tr>
+                        <tr>
                             <td>
                                 <button class="btn btn-success" type="button" pButton style="float:left" (click)="saveService()" [label]="isNewService? 'Add':'Update'" [disabled]="disableAddServiceBtn"></button>
                             </td>
@@ -34,8 +40,8 @@
             </div>
         </div>
     </div>
-    <div class="row" *ngIf="isNewRecord === true">
-        <div class="col-md" style="text-align:right">
+    <div class="row" *ngIf="isNewRecord === true" style="padding-top:20px;">
+        <div class="col-sm">
             <input class="btn btn-info" type="button" name="Back" value="Cancel" (click)="cancel()" />
             &nbsp;&nbsp;
             <input class="btn btn-info" type="button" name="Back" value="Back" (click)="goToPrev()" />

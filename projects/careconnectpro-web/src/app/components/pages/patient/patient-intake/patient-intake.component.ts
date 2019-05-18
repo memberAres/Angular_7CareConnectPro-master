@@ -31,7 +31,8 @@ import { BaseComponent } from "../../../shared/core";
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: "patient-intake",
-  templateUrl: "./patient-intake.component.html"
+  templateUrl: "./patient-intake.component.html",
+  styleUrls: ["./patient-intake.component.css"]
 })
 export class PatientInTakeComponent extends BaseComponent
   implements OnInit, AfterViewInit {

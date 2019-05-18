@@ -1,18 +1,20 @@
 ﻿<form novalidate="" #f2="ngForm" (ngSubmit)="f2.form.valid ? submitForm(): ''" class="m-t-40 tab-wizard wizard-circle wizard clearfix" role="application" id="f1">
     <div class="row" *ngIf="isNewRecord === false">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-7 app-ho2-form-label">
         </div>
-        <div class="col-8 app-ho2-edit-right">
-            <ho2edithelper activeAction="0" (actionSelected)="editEventSubmit($event)" [saveStatus]="saveStatus"></ho2edithelper>
+        <div class="col-5">
+            <div *ngIf="isNewRecord === false" class="col-md app-ho2-edit-right">
+                <ho2edithelper activeAction="0" showDelete="false" (actionSelected)="editEventSubmit($event)" [saveStatus]="saveStatus"></ho2edithelper>
+            </div>
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 col-6-leftside">
+        <div class="col-12 col-sm-4 col-6-leftside">
             <div class="form-group m-b-40">
                 <label class="col-md-4-label">Profile Picture:</label>
             </div>
         </div>
-        <div class="col-4 col-6-leftside">
+        <div class="col-12 col-sm-4 col-6-leftside">
             <div *ngIf="((isEditMode === false) && (isNewRecord === false))" style="text-align:left">
                 <img class="img-circle" [src]="getVendorImg(vendorService.vendor.photoName)" alt="Profile Picture" width="120" height="100">
             </div>
@@ -36,12 +38,12 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 col-6-leftside">
+        <div class="col-12 col-sm-4 col-6-leftside">
             <div class="form-group m-b-40">
                 <label class="col-md-4-label">Notes:</label>
             </div>
         </div>
-        <div class="col-8 col-6-leftside">
+        <div class="col-12 col-sm-8 col-6-leftside">
             <div *ngIf="isEditMode">
                 <div class="form-group m-b-40">
                     <textarea pInputTextarea [(ngModel)]="vendorService.vendor.notes" [rows]="4" [cols]="80" style="font-size:12px; width:100%;" name="txtnotes"></textarea>
@@ -53,8 +55,8 @@
             </div>
         </div>
     </div>
-    <div class="row" *ngIf="isNewRecord === true">
-        <div class="col-md" style="text-align:right">
+    <div class="row" *ngIf="isNewRecord === true" style="padding-top:20px;">
+        <div class="col-sm">
             <input class="btn btn-info" type="button" name="Back" value="Cancel" (click)="cancel()" />
             &nbsp;&nbsp;
             <input class="btn btn-info" type="button" name="Back" value="Back" (click)="goToPrev()" />

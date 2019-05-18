@@ -62,7 +62,11 @@ $(function () {
     // topbar stickey on scroll
     
     
-    
+    $(".alert").on("click", function () {
+        alert("sdfsdfsdf")
+        // $(".chat-left-aside").toggleClass("open-pnl");
+        // $(".open-panel i").toggleClass("ti-angle-left");
+    });
     // this is for close icon when navigation open in mobile view
     $(".nav-toggler").click(function () {
         $("body").toggleClass("show-sidebar");

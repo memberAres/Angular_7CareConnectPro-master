@@ -1,4 +1,4 @@
-import { Component, OnInit ,ElementRef, ViewChild} from "@angular/core";
+import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import {
   CareConnectLocalStorage,
@@ -53,7 +53,7 @@ export class ChatComponent extends BaseComponent implements OnInit {
   /**
    * Method - Constructor
    */
-  @ViewChild('messagelist')
+  @ViewChild("messagelist")
   private myScrollContainer: ElementRef;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -64,6 +64,7 @@ export class ChatComponent extends BaseComponent implements OnInit {
     private notifyService: NotificationsService,
     private appMessageSvc: AppMessageService,
     private chatService: SignalrhubService
+    
   ) {
     super();
     this.contacts = Array<ChatContact>();
@@ -83,11 +84,28 @@ export class ChatComponent extends BaseComponent implements OnInit {
     }
     this.getLoggedInUserInfo();
     this.scrollToBottom();
+    let toggle = 0;
+    $(document).ready(function() {
+        $('.open-panel').click(function() {
+        $('.chat-left-aside').toggleClass('open');
+        if(toggle==0){
+          $('.open i.arrow').removeClass('ti-angle-right');
+          $('.open i.arrow').addClass('ti-angle-left');
+          toggle++;
+        }
+        else{
+          $('.open-panel i.arrow').removeClass('ti-angle-left');
+          $('.open-panel i.arrow').addClass('ti-angle-right');
+          toggle--;
+        }
+      });
+    });
   }
 
   /**
    * Method - Retrieve user session object
    */
+
   getLoggedInUserInfo() {
     this.authService.userSessionSubject
       .pipe(takeUntil(this.destroy$))
@@ -190,6 +208,7 @@ export class ChatComponent extends BaseComponent implements OnInit {
   }
 
   onSendMessage() {
+    alert("!!!")
     if (!!this.message) {
       const currDate = new Date();
       const chatDetail: AppChatDetail = {

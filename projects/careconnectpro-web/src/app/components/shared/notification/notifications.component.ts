@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Message } from "primeng/primeng";
-import {MessageService} from 'primeng/api';
+import { MessageService } from "primeng/api";
 import { NotificationsService } from "service-lib";
 import { Subscription } from "rxjs/Subscription";
 
@@ -17,7 +17,7 @@ export class NotificationsComponent implements OnInit, OnDestroy {
   constructor(
     private notificationsService: NotificationsService,
     private messageService: MessageService
-    ) {}
+  ) {}
 
   ngOnInit() {
     this.subscribeToNotifications();

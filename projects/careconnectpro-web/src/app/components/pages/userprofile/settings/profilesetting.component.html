@@ -50,33 +50,33 @@
                     <div class="card-body">
                         <div class="container">
                             <div class="row justify-content-center">
-                                <div class="col-3 app-ho2-form-label">
+                                <div class="col-12 col-md-3 app-ho2-form-label">
                                 </div>
-                                <div class="col-8 app-ho2-edit-right">
+                                <div class="col-12 col-md-8 app-ho2-edit-right">
                                     <ho2edithelper [activeAction]="activeActionCred" (actionSelected)="saveUserCred($event)" [saveStatus]="saveStatus2"></ho2edithelper>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <div class="col-6 app-ho2-form-label">
+                                <div class="col-12 col-md-6 app-ho2-form-label">
                                     <label class="app-ho2-form-label">Username:</label>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-md-6">
                                     <p class="col-12 app-ho2-mt-label">{{ employee.userName }}</p>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <div class="col-6 app-ho2-form-label">
+                                <div class="col-12 col-md-6 app-ho2-form-label">
                                     <label class="app-ho2-form-label">System Administrator:</label>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-md-6">
                                     <p-toggleButton class="col-12 app-ho2-mt-label" [(ngModel)]="employee.isSysAdmin" [disabled]="true"></p-toggleButton>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <div class="col-6 app-ho2-form-label">
+                                <div class="col-12 col-md-6 app-ho2-form-label">
                                     <label class="app-ho2-form-label">Password*:</label>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-md-6">
                                     <div *ngIf="isEditMode" style="text-align:left" colspan="4">
                                         <div class="col-7 floating-labels">
                                             <input type="password" class="form-control" name="employeepassword" id="employeepassword" required [(ngModel)]="employee.password">
@@ -92,10 +92,10 @@
                                 </div>
                             </div>
                             <div class="row justify-content-center" *ngIf="isEditMode">
-                                <div class="col-6 app-ho2-form-label">
+                                <div class="col-12 col-md-6 app-ho2-form-label">
                                     <label class="app-ho2-form-label">Re-enter Password*:</label>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-md-6">
                                     <div *ngIf="isEditMode" style="text-align:left" colspan="4">
                                         <div class="col-md-7 floating-labels">
                                             <input type="password" class="form-control" name="password2" id="password2" required [(ngModel)]="password2">

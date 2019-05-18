@@ -15,7 +15,8 @@ import { Router } from "@angular/router";
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: "patient-main",
-  templateUrl: "./patient-main.component.html"
+  templateUrl: "./patient-main.component.html",
+  styleUrls: ["./patient-main.component.css"]
 })
 export class PatientMainComponent implements OnInit, AfterViewInit {
   tabView: number = 1;

@@ -37,9 +37,9 @@ export class DisplayListComponent implements OnInit {
   ngOnInit() {
     this.physicianService.physician.isActive = true;
     this.cols = [
-      { field: 'firstName', header: 'Name' },
-      { field: 'jobTitle', header: 'Title' }
-  ];
+      { field: "firstName", header: "Name" },
+      { field: "jobTitle", header: "Title" }
+    ];
   }
 
   getEmployeeImg(imgName: any): any {

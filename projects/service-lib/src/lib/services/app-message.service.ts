@@ -111,7 +111,7 @@ export class AppMessageService extends BaseMethod {
         }),
         catchError(this.handleHttpResponseError$)
       );
-  } 
+  }
 
   UpdateMessageReadStatus(messageRequest: AppMessageRequest) {
     var params = JSON.stringify(messageRequest);

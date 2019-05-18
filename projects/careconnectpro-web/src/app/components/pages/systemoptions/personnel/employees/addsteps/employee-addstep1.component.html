@@ -1,41 +1,41 @@
 ﻿<form novalidate="" #f2="ngForm" (ngSubmit)="((f2.form.valid) && (validateDD())) ? submitForm(): ''" class="m-t-40 tab-wizard wizard-circle wizard clearfix"
     role="application" id="f1">
-    <div class="row" *ngIf="((isNewRecord === false) && (isEditMode === true))">
-        <div class="col-md app-ho2-edit-right">
-            <div *ngIf="employeeService.employee.isActive === true">
-                <input class="btn btn-info btn-sm" type="button" name="deactivate" value="Terminate Employee" (click)="confirmDelete()" />
-                <div *ngIf="confirmDeActivate === true" style="font-size: 14px">
-                    <p class="text-danger">Are you sure you want to deactivate this employee?
-                        <i class="fa fa-check" style="cursor:pointer" (click)="deActivateUser()">
-                        </i>
-                        <i class="fa fa-times-circle" style="cursor:pointer;padding-left:8px;" (click)="cancelAction()"></i>
-                    </p>
+    <div class="row">
+        <div class="col-8" style="padding:0px">
+            <div class="col-md app-ho2-edit-right"  *ngIf="((isNewRecord === false) && (isEditMode === true))">
+                <div *ngIf="employeeService.employee.isActive === true">
+                    <input class="btn btn-info btn-sm" type="button" name="deactivate" value="Terminate Employee" (click)="confirmDelete()" />
+                    <div *ngIf="confirmDeActivate === true" style="font-size: 14px">
+                        <p class="text-danger">Are you sure you want to deactivate this employee?
+                            <i class="fa fa-check" style="cursor:pointer" (click)="deActivateUser()">
+                            </i>
+                            <i class="fa fa-times-circle" style="cursor:pointer;padding-left:8px;" (click)="cancelAction()"></i>
+                        </p>
+                    </div>
+                </div>
+                <div *ngIf="employeeService.employee.isActive === false">
+                    <input class="btn btn-info btn-sm" type="button" name="deactivate" value="Activate Employee" (click)="confirmReActivation()"
+                    />
+                    <div *ngIf="confirmActivate === true" style="font-size: 14px">
+                        <p class="text-danger">Are you sure you want to re-activate this employee?
+                            <i class="fa fa-check" style="cursor:pointer" (click)="activateUser()"></i>&nbsp;
+                            <i class="fa fa-times-circle" style="cursor:pointer;padding-left:8px" (click)="cancelAction()"></i>
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div *ngIf="employeeService.employee.isActive === false">
-                <input class="btn btn-info btn-sm" type="button" name="deactivate" value="Activate Employee" (click)="confirmReActivation()"
-                />
-                <div *ngIf="confirmActivate === true" style="font-size: 14px">
-                    <p class="text-danger">Are you sure you want to re-activate this employee?
-                        <i class="fa fa-check" style="cursor:pointer" (click)="activateUser()"></i>&nbsp;
-                        <i class="fa fa-times-circle" style="cursor:pointer;padding-left:8px" (click)="cancelAction()"></i>
-                    </p>
-                </div>
+        </div>
+        <div class="col-4">
+            <div *ngIf="isNewRecord === false" class="col-md app-ho2-edit-right">
+                    <ho2edithelper activeAction="0" showDelete="false" (actionSelected)="editEventSubmit($event)" [saveStatus]="saveStatus"></ho2edithelper>
             </div>
-        </div>
-    </div>
-    <div class="row" *ngIf="isNewRecord === false">
-        <div class="col-md-3 app-ho2-form-label">
-        </div>
-        <div class="col-md-8 app-ho2-edit-right">
-            <ho2edithelper activeAction="0" showDelete="false" (actionSelected)="editEventSubmit($event)" [saveStatus]="saveStatus"></ho2edithelper>
-        </div>
+        </div>               
     </div>
     <div class="row justify-content-center">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-12 col-sm-3 app-ho2-form-label">
             <label for="prefix" class="app-ho2-form-label">Prefix:</label>
         </div>
-        <div class="col-5 floating-labels">
+        <div class="col-12 col-sm-5 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="prefix" class="form-control" [(ngModel)]="employeeService.employee.prefix">
                     <option *ngFor="let item of prefixCodesSelect" [value]="item.value">{{item.label}}</option>
@@ -47,10 +47,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-12 col-sm-3 app-ho2-form-label">
             <label for="firstName" class="app-ho2-form-label">First Name:</label>
         </div>
-        <div class="col-5 floating-labels">
+        <div class="col-12 col-sm-5 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter employee first name" name="firstName" id="firstName"
                     required [(ngModel)]="employeeService.employee.firstName" #firstName="ngModel">
@@ -70,10 +70,10 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-12 col-sm-3 app-ho2-form-label">
             <label for="lastName" class="app-ho2-form-label">Last Name:</label>
         </div>
-        <div class="col-5 floating-labels">
+        <div class="col-12 col-sm-5 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter employee last name" name="lastName" id="lastName" required
                     [(ngModel)]="employeeService.employee.lastName" #lastName="ngModel">
@@ -93,10 +93,10 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-12 col-sm-3 app-ho2-form-label">
             <label for="suffixCodes" class="app-ho2-form-label">Suffix:</label>
         </div>
-        <div class="col-5 floating-labels">
+        <div class="col-12 col-sm-5 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="suffixCodes" class="form-control" [(ngModel)]="employeeService.employee.suffix">
                     <option *ngFor="let item of suffixCodesSelect" [value]="item.value">{{item.label}}</option>
@@ -108,10 +108,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-12 col-sm-3 app-ho2-form-label">
             <label for="dateofBirth" class="app-ho2-form-label">Date of Birth:</label>
         </div>
-        <div class="col-5">
+        <div class="col-12 col-sm-5">
             <div *ngIf="isEditMode">
                 <p-calendar name="dateofBirth" class="form-control app-calender" dateFormat="mm/dd/yy" [monthNavigator]="true" [yearNavigator]="true"
                     yearRange="1910:2035" showAnim="slideDown" [(ngModel)]="dateOfBirth"></p-calendar>
@@ -126,10 +126,10 @@
         </div>
     </div>
     <div class="row justify-content-center" style="margin-top: 5px;">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-12 col-sm-3 app-ho2-form-label">
             <label for="genderCodes" class="app-ho2-form-label">Gender:</label>
         </div>
-        <div class="col-5 floating-labels">
+        <div class="col-12 col-sm-5 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="genderCodes" class="form-control" [(ngModel)]="employeeService.employee.gender">
                     <option *ngFor="let item of genderCodesSelect" [value]="item.value">{{item.label}}</option>
@@ -141,10 +141,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-12 col-sm-3 app-ho2-form-label">
             <label for="evvid" class="app-ho2-form-label">EVV ID:</label>
         </div>
-        <div class="col-5 floating-labels">
+        <div class="col-12 col-sm-5 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter employee EVV Id" name="evvid" id="evvid" required [(ngModel)]="employeeService.employee.evvId"
                     #evvid="ngModel">
@@ -163,10 +163,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-12 col-sm-3 app-ho2-form-label">
             <label for="employeessn" class="app-ho2-form-label">SSN:</label>
         </div>
-        <div class="col-5 floating-labels">
+        <div class="col-12 col-sm-5 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter employee SSN" name="employeessn" id="employeessn" required
                     [(ngModel)]="employeeService.employee.ssn" #employeessn="ngModel">
@@ -186,10 +186,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-12 col-sm-3 app-ho2-form-label">
             <label for="employeesalary" class="app-ho2-form-label">Salary:</label>
         </div>
-        <div class="col-5 floating-labels">
+        <div class="col-12 col-sm-5 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter employee salary" name="employeesalary" id="employeessn"
                     required [(ngModel)]="employeeService.employee.salary" #employeesalary="ngModel">
@@ -209,10 +209,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-12 col-sm-3 app-ho2-form-label">
             <label for="salaryCodes" class="app-ho2-form-label">Salary Type:</label>
         </div>
-        <div class="col-5 floating-labels">
+        <div class="col-12 col-sm-5 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="salaryCodes" class="form-control" [(ngModel)]="employeeService.employee.salaryType" required #salaryCodes="ngModel">
                     <option *ngFor="let item of salaryCodesSelect" [value]="item.value">{{item.label}}</option>
@@ -229,10 +229,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-12 col-sm-3 app-ho2-form-label">
             <label for="jobtitle" class="app-ho2-form-label">Job Title:</label>
         </div>
-        <div class="col-5 floating-labels">
+        <div class="col-12 col-sm-5 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter employee title" name="jobtitle" id="jobtitle" required
                     [(ngModel)]="employeeService.employee.jobTitle" #jobtitle="ngModel">
@@ -252,10 +252,10 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-12 col-sm-3 app-ho2-form-label">
             <label for="departments" class="app-ho2-form-label">Department:</label>
         </div>
-        <div class="col-5 floating-labels">
+        <div class="col-12 col-sm-5 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="departments" class="form-control" [(ngModel)]="employeeService.employee.departmentId" required #departments="ngModel">
                     <option *ngFor="let item of departmentsSelect" [value]="item.value">{{item.label}}</option>
@@ -272,10 +272,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-12 col-sm-3 app-ho2-form-label">
             <label for="appRoles" class="app-ho2-form-label">Role:</label>
         </div>
-        <div class="col-5 floating-labels">
+        <div class="col-12 col-sm-5 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="appRoles" class="form-control" [(ngModel)]="employeeService.employee.roleId" required #appRoles="ngModel">
                     <option *ngFor="let item of appRolesSelect" [value]="item.value">{{item.label}}</option>
@@ -292,10 +292,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-12 col-sm-3 app-ho2-form-label">
             <label for="reportToId" class="app-ho2-form-label">Report To:</label>
         </div>
-        <div class="col-5 floating-labels">
+        <div class="col-12 col-sm-5 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="reportToId" class="form-control" [(ngModel)]="employeeService.employee.reportToId" required #reportToId="ngModel">
                     <option *ngFor="let item of employeesSelect" [value]="item.value">{{item.label}}</option>
@@ -312,10 +312,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-12 col-sm-3 app-ho2-form-label">
             <label for="dateHired" class="app-ho2-form-label">Hired Date:</label>
         </div>
-        <div class="col-5">
+        <div class="col-12 col-sm-5">
             <div *ngIf="(isNewRecord === true)">
                 <p-calendar name="dateHired" class="form-control app-calender" dateFormat="mm/dd/yy" [monthNavigator]="true" [yearNavigator]="true"
                     yearRange="1910:2035" showAnim="slideDown" [(ngModel)]="employeeService.employee.dateHired"></p-calendar>
@@ -329,20 +329,20 @@
         </div>
     </div>
     <div class="row justify-content-center" *ngIf="isNewRecord === false">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-12 col-sm-3 app-ho2-form-label">
             <label for="dateTerminated" class="app-ho2-form-label">Termination Date:</label>
         </div>
-        <div class="col-5">
-            <!--<div *ngIf="isEditMode">
+        <div class="col-12 col-sm-5">
+            <div *ngIf="isEditMode">
                 <p-calendar name="dateTerminated" class="form-control app-calender" dateFormat="mm/dd/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="1910:2035" showAnim="slideDown" [(ngModel)]="employeeService.dateTerminated"></p-calendar>
-            </div>-->
+            </div>
             <div>
                 <p class="col-md-12 app-ho2-mt-label">{{ employeeService.employee.dateTerminated | date }}</p>
             </div>
         </div>
     </div>
-    <div class="row justify-content-center" *ngIf="isNewRecord === true">
-        <div class="col-md" style="text-align:right">
+    <div class="row justify-content-center" *ngIf="isNewRecord === true" style="padding-top:20px;">
+        <div class="col-sm">
             <input class="btn btn-info" type="button" name="Back" value="Cancel" (click)="cancel()" /> &nbsp;&nbsp;
             <input class="btn btn-info" type="submit" name="Submit" value="Next" />
         </div>

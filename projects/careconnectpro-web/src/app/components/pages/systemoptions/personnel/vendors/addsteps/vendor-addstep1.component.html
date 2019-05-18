@@ -1,36 +1,39 @@
 ﻿
 <form novalidate="" #f2="ngForm" (ngSubmit)="f2.form.valid? submitForm(): ''" class="m-t-40 tab-wizard wizard-circle wizard clearfix" role="application" id="f1">
-    <div class="row" *ngIf="((isNewRecord === false) && (isEditMode === true))">
-        <div class="col-md app-ho2-edit-right">
-            <div *ngIf="vendorService.vendor.isActive === true">
-                <input class="btn btn-info btn-sm" type="button" name="deactivate" value="DeActivate Vendor" (click)="confirmDelete()" />
-                <div *ngIf="confirmDeActivate === true" style="font-size: 14px">
-                    <p class="text-danger">
-                        Are you sure you want to deactivate this Vendor? <i class="fa fa-check" style="cursor:pointer" (click)="deActivateUser()">
-                        </i><i class="fa fa-times-circle" style="cursor:pointer;padding-left:8px;" (click)="cancelAction()"></i>
-                    </p>
+    <div class="row">
+            <div class="col-8" style="padding:0px">
+                <div class="col-md app-ho2-edit-right"  *ngIf="((isNewRecord === false) && (isEditMode === true))">
+                    <div *ngIf="employeeService.employee.isActive === true">
+                        <input class="btn btn-info btn-sm" type="button" name="deactivate" value="Terminate Employee" (click)="confirmDelete()" />
+                        <div *ngIf="vendorService.vendor.isActive === true">
+                                <input class="btn btn-info btn-sm" type="button" name="deactivate" value="DeActivate Vendor" (click)="confirmDelete()" />
+                                <div *ngIf="confirmDeActivate === true" style="font-size: 14px">
+                                    <p class="text-danger">
+                                        Are you sure you want to deactivate this Vendor? <i class="fa fa-check" style="cursor:pointer" (click)="deActivateUser()">
+                                        </i><i class="fa fa-times-circle" style="cursor:pointer;padding-left:8px;" (click)="cancelAction()"></i>
+                                    </p>
+                                </div>
+                            </div>
+                    </div>
+                    <div *ngIf="vendorService.vendor.isActive === false">
+                            <input class="btn btn-info btn-sm" type="button" name="deactivate" value="Activate Vendor" (click)="confirmReActivation()" />
+                            <div *ngIf="confirmActivate === true" style="font-size: 14px">
+                                <p class="text-danger">Are you sure you want to re-activate this vendor? <i class="fa fa-check" style="cursor:pointer" (click)="activateUser()"></i>&nbsp;<i class="fa fa-times-circle" style="cursor:pointer;padding-left:8px" (click)="cancelAction()"></i></p>
+                            </div>
+                        </div>
                 </div>
             </div>
-            <div *ngIf="vendorService.vendor.isActive === false">
-                <input class="btn btn-info btn-sm" type="button" name="deactivate" value="Activate Vendor" (click)="confirmReActivation()" />
-                <div *ngIf="confirmActivate === true" style="font-size: 14px">
-                    <p class="text-danger">Are you sure you want to re-activate this vendor? <i class="fa fa-check" style="cursor:pointer" (click)="activateUser()"></i>&nbsp;<i class="fa fa-times-circle" style="cursor:pointer;padding-left:8px" (click)="cancelAction()"></i></p>
+            <div class="col-4">
+                <div *ngIf="isNewRecord === false" class="col-md app-ho2-edit-right">
+                        <ho2edithelper activeAction="0" showDelete="false" (actionSelected)="editEventSubmit($event)" [saveStatus]="saveStatus"></ho2edithelper>
                 </div>
-            </div>
+            </div>               
         </div>
-    </div>
-    <div class="row" *ngIf="isNewRecord === false">
-        <div class="col-md-3 app-ho2-form-label">
-        </div>
-        <div class="col-md-8 app-ho2-edit-right">
-            <ho2edithelper activeAction="0" showDelete="false" (actionSelected)="editEventSubmit($event)" [saveStatus]="saveStatus"></ho2edithelper>
-        </div>
-    </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="companyname" class="app-ho2-form-label">Business Name:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter your business name" name="companyname" id="companyname" required [(ngModel)]="vendorService.vendor.companyName" #companyname="ngModel">
                 <span class="bar"></span>
@@ -47,10 +50,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="prefix" class="app-ho2-form-label">Prefix:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="prefix" class="form-control" [(ngModel)]="vendorService.vendor.contactPrefix">
                     <option *ngFor="let item of prefixCodesSelect" [value]="item.value">{{item.label}}</option>
@@ -62,10 +65,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="firstName" class="app-ho2-form-label">First Name:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter vendor first name" name="firstName" id="firstName" required [(ngModel)]="vendorService.vendor.contactFirstName" #firstName="ngModel">
                 <span class="bar"></span>
@@ -82,10 +85,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="lastName" class="app-ho2-form-label">Last Name:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter vendor last name" name="lastName" id="lastName" required [(ngModel)]="vendorService.vendor.contactLastName" #lastName="ngModel">
                 <span class="bar"></span>
@@ -102,10 +105,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="suffixCodes" class="app-ho2-form-label">Suffix:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="suffixCodes" class="form-control" [(ngModel)]="vendorService.vendor.contactSuffix">
                     <option *ngFor="let item of suffixCodesSelect" [value]="item.value">{{item.label}}</option>
@@ -117,10 +120,10 @@
         </div>
     </div>
        <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="npinum" class="app-ho2-form-label">Npi:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter vendor Npi number" name="npinum" id="npinum" required [(ngModel)]="vendorService.vendor.npi" #npinum="ngModel">
                 <span class="bar"></span>
@@ -137,10 +140,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="licenseid" class="app-ho2-form-label">License Id:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter vendor license number" name="licenseid" id="licenseid" required [(ngModel)]="vendorService.vendor.licenseId" #licenseid="ngModel">
                 <span class="bar"></span>
@@ -157,10 +160,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="fedtaxid" class="app-ho2-form-label">Federal Tax Id:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter federal tax id" name="fedtaxid" id="fedtaxid" required [(ngModel)]="vendorService.vendor.fedTaxId" #fedtaxid="ngModel">
                 <span class="bar"></span>
@@ -176,8 +179,8 @@
             </div>
         </div>
     </div>
-     <div class="row" *ngIf="isNewRecord === true">
-        <div class="col-md" style="text-align:right">
+     <div class="row" *ngIf="isNewRecord === true" style="padding-top:20px;">
+        <div class="col-sm">
             <input class="btn btn-info" type="button" name="Cancel" value="Cancel" (click)="cancel()" />
             &nbsp;&nbsp;
             <input class="btn btn-info" type="submit" name="Submit" value="Next" />

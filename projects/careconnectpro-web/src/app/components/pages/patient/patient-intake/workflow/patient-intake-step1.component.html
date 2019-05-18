@@ -8,17 +8,19 @@
         </div>
     </div>
     <div class="row" *ngIf="isNewRecord === false">
-        <div class="col-3 app-ho2-form-label">
+        <div class="col-7 app-ho2-form-label">
         </div>
-        <div class="col-8 app-ho2-edit-right">
-            <ho2edithelper activeAction="0" showDelete="false" (actionSelected)="editEventSubmit($event)" [saveStatus]="saveStatus"></ho2edithelper>
+        <div class="col-5">
+            <div *ngIf="isNewRecord === false" class="col-md app-ho2-edit-right">
+                <ho2edithelper activeAction="0" showDelete="false" (actionSelected)="editEventSubmit($event)" [saveStatus]="saveStatus"></ho2edithelper>
+            </div>
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="prefix" class="app-ho2-form-label">Prefix:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="prefix" class="form-control" [(ngModel)]="patient.prefix">
                     <option *ngFor="let item of prefixCodesSelect" [value]="item.value">{{item.label}}</option>
@@ -30,10 +32,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="firstName" class="app-ho2-form-label">First Name:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter employee first name" name="firstName" id="firstName" required [(ngModel)]="patient.firstName" #firstName="ngModel">
                 <span class="bar"></span>
@@ -51,10 +53,10 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="lastName" class="app-ho2-form-label">Last Name:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter employee last name" name="lastName" id="lastName" required [(ngModel)]="patient.lastName" #lastName="ngModel">
                 <span class="bar"></span>
@@ -72,10 +74,10 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="suffixCodes" class="app-ho2-form-label">Suffix:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="suffixCodes" class="form-control" [(ngModel)]="patient.suffix">
                     <option *ngFor="let item of suffixCodesSelect" [value]="item.value">{{item.label}}</option>
@@ -87,10 +89,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="dateofBirth" class="app-ho2-form-label">Date of Birth:</label>
         </div>
-        <div class="col-7">
+        <div class="col-12 col-sm-7">
             <div *ngIf="isEditMode">
                 <p-calendar name="dateofBirth" class="form-control app-calender" dateFormat="mm/dd/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="1910:2035" showAnim="slideDown" [(ngModel)]="patient.dateOfBirth"></p-calendar>
                 <div *ngIf="(f2.submitted && (patient.dateOfBirth === null))" class="text-danger app-form-validation-error">
@@ -103,10 +105,10 @@
         </div>
     </div>
     <div class="row justify-content-center" style="margin-top: 5px;">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="genderCodes" class="app-ho2-form-label">Gender:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="genderCodes" class="form-control" [(ngModel)]="patient.gender">
                     <option *ngFor="let item of genderCodesSelect" [value]="item.value">{{item.label}}</option>
@@ -118,10 +120,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="maritalCodes" class="app-ho2-form-label">Marital Status:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="maritalCodes" class="form-control" [(ngModel)]="patient.maritalStatus">
                     <option *ngFor="let item of maritalCodesSelect" [value]="item.value">{{item.label}}</option>
@@ -133,10 +135,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="raceCodes" class="app-ho2-form-label">Race:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <select name="raceCodes" class="form-control" [(ngModel)]="patient.race">
                     <option *ngFor="let item of raceCodesSelect" [value]="item.value">{{item.label}}</option>
@@ -149,10 +151,10 @@
     </div>
         
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="patientssn" class="app-ho2-form-label">SSN:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter patient SSN" name="patientssn" id="patientssn" required [(ngModel)]="ssn" #patientssn="ngModel">
                 <span class="bar"></span>
@@ -169,10 +171,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="driverslicnumber" class="app-ho2-form-label">Driver's License No.:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter patient driver's license'" name="driverslicnumber" id="driverslicnumber" [(ngModel)]="driversLicense" #driverslicnumber="ngModel">
                 <span class="bar"></span>
@@ -183,10 +185,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="homephone" class="app-ho2-form-label">Home Phone:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter patient home phone" name="homephone" id="homephone" required [(ngModel)]="patientHomePhone" #homephone="ngModel">
                 <span class="bar"></span>
@@ -203,10 +205,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="cellphone" class="app-ho2-form-label">Cell Phone:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter patient cell phone" name="cellphone" id="cellphone" [(ngModel)]="patientCellPhone" #cellphone="ngModel">
                 <span class="bar"></span>
@@ -217,10 +219,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4 app-ho2-form-label">
+        <div class="col-12 col-sm-4 app-ho2-form-label">
             <label for="patientemail" class="app-ho2-form-label">Email:</label>
         </div>
-        <div class="col-7 floating-labels">
+        <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
                 <input type="text" pInputText class="form-control" placeholder="Enter patient email address" name="patientemail" id="patientemail" [(ngModel)]="patientEmail" #patientemail="ngModel">
                 <span class="bar"></span>
@@ -231,7 +233,7 @@
         </div>
     </div>
     <div class="row justify-content-center" *ngIf="isNewRecord === true" style="padding-top: 15px">
-        <div class="col" style="text-align:right">
+        <div class="col-sm">
             <input class="btn btn-info" type="button" name="Back" value="Cancel" (click)="cancel()" />
             &nbsp;&nbsp;
             <input class="btn btn-info" type="submit" name="Submit" value="Next" />

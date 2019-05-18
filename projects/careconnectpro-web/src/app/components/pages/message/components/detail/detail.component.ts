@@ -91,8 +91,7 @@ export class DetailComponent implements OnInit {
   getMessage() {
     this.spinnerService.show();
     this.dataService
-      .postData(this.messageRequest, 
-        APIUrls.MessageGetMessageDetail)
+      .postData(this.messageRequest, APIUrls.MessageGetMessageDetail)
       .finally(() => {
         this.spinnerService.hide();
       })
@@ -211,14 +210,12 @@ export class DetailComponent implements OnInit {
   findEmployeeName(employeeId: string) {
     let ret: string = "N/A";
     const empNames = this.employeeService.getEmployeeNames();
-if (!!empNames) {
-  const x = empNames.findIndex(
-    y => y.id === employeeId
-  );
-  if (x > -1) {
-    ret = empNames[x].name;
-  }
-}
+    if (!!empNames) {
+      const x = empNames.findIndex(y => y.id === employeeId);
+      if (x > -1) {
+        ret = empNames[x].name;
+      }
+    }
     return ret;
   }
 

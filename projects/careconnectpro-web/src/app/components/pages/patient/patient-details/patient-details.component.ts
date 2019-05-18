@@ -25,7 +25,7 @@ import {
 } from "model-lib";
 import { BaseComponent } from "../../../shared/core";
 import { takeUntil } from "rxjs/operators";
-import { Subject } from 'rxjs';
+import { Subject } from "rxjs";
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -140,9 +140,9 @@ export class PatientDetailsComponent extends BaseComponent
 
   /**
    * Method - Handle update to patient record section of the view
-   * @param event 
+   * @param event
    */
-  handleStep1(event: EditHelperUserAction) {    
+  handleStep1(event: EditHelperUserAction) {
     switch (event.actionType) {
       case EditHelperActionType.update: {
         this.saveStatus1.next(true);
@@ -156,7 +156,7 @@ export class PatientDetailsComponent extends BaseComponent
       }
       case EditHelperActionType.reActivate: {
         this.saveStatus1.next(true);
-        this.updatePatient(); 
+        this.updatePatient();
         break;
       }
       default: {
@@ -172,7 +172,7 @@ export class PatientDetailsComponent extends BaseComponent
 
   /**
    *  Method - Handle update to patient address  section of the view
-   * @param event 
+   * @param event
    */
   handleStep2(event: EditHelperUserAction) {
     switch (event.actionType) {
@@ -199,7 +199,7 @@ export class PatientDetailsComponent extends BaseComponent
 
   /**
    *  Method - Handle update to patient relative section of the view
-   * @param event 
+   * @param event
    */
   handleStep3(event: EditHelperUserAction) {
     switch (event.actionType) {
@@ -226,7 +226,7 @@ export class PatientDetailsComponent extends BaseComponent
 
   /**
    *  Method - Handle update to patient referral doctor section of the view
-   * @param event 
+   * @param event
    */
   handleStep4(event: EditHelperUserAction) {
     switch (event.actionType) {
@@ -251,7 +251,7 @@ export class PatientDetailsComponent extends BaseComponent
 
   /**
    *  Method - Handle update to patient employer section of the view
-   * @param event 
+   * @param event
    */
   handleStep5(event: EditHelperUserAction) {
     switch (event.actionType) {
@@ -278,7 +278,7 @@ export class PatientDetailsComponent extends BaseComponent
 
   /**
    *  Method - Handle update to patient insurance record section of the view
-   * @param event 
+   * @param event
    */
   handleStep6(event: EditHelperUserAction) {
     switch (event.actionType) {
@@ -304,7 +304,7 @@ export class PatientDetailsComponent extends BaseComponent
 
   /**
    *  Method - Handle update to patient order and medication section
-   * @param event 
+   * @param event
    */
   handleStep9(event: EditHelperUserAction) {
     switch (event.actionType) {
@@ -341,7 +341,7 @@ export class PatientDetailsComponent extends BaseComponent
    */
   updatePatient() {
     let patient = this.intakeService.getPatient();
-    //remove non-patient data to be sent to data service 
+    //remove non-patient data to be sent to data service
     patient = this.removeAllNonPatientData(patient);
     if (!!patient) {
       this.updateDbData(patient, APIUrls.Patient);
@@ -388,7 +388,7 @@ export class PatientDetailsComponent extends BaseComponent
   updatePatientRelative() {
     const relative = this.intakeService.getPatientRelatives();
     if (!!relative) {
-      this.updateDbData(relative[0], APIUrls.PatientRelative)
+      this.updateDbData(relative[0], APIUrls.PatientRelative);
     }
   }
 
@@ -398,10 +398,9 @@ export class PatientDetailsComponent extends BaseComponent
   deletePatientRelative() {
     const relative = this.intakeService.getPatientRelatives();
     if (!!relative) {
-      this.deleteDbData(relative[0], APIUrls.PatientRelative)
+      this.deleteDbData(relative[0], APIUrls.PatientRelative);
     }
   }
-
 
   /**
    * Method - Update patient employer
@@ -409,7 +408,7 @@ export class PatientDetailsComponent extends BaseComponent
   updatePatientEmployer() {
     const employer = this.intakeService.getPatientEmployers();
     if (!!employer) {
-      this.updateDbData(employer[0], APIUrls.PatientEmployer)
+      this.updateDbData(employer[0], APIUrls.PatientEmployer);
     }
   }
 
@@ -419,15 +418,15 @@ export class PatientDetailsComponent extends BaseComponent
   deletePatientEmployer() {
     const employer = this.intakeService.getPatientEmployers();
     if (!!employer) {
-      this.deleteDbData(employer[0], APIUrls.PatientEmployer)
+      this.deleteDbData(employer[0], APIUrls.PatientEmployer);
     }
   }
-  
+
   /**
    * Method - Remove supplemental patient data to reduce api call
-   * @param patient 
+   * @param patient
    */
-   removeAllNonPatientData(patient: Patient) {
+  removeAllNonPatientData(patient: Patient) {
     patient.insurance = [];
     patient.medications = [];
     patient.paymentTransactions = [];
@@ -439,14 +438,14 @@ export class PatientDetailsComponent extends BaseComponent
     patient.medPrograms = [];
     patient.diagnosis = [];
     return patient;
-   }
+  }
 
   /**
    * Method - Update patient diagnosis
    */
   updatePatientDiagnosis() {
     let patient = this.intakeService.getPatient();
-    //remove non-patient data except diagnosis to be sent to data service    
+    //remove non-patient data except diagnosis to be sent to data service
     patient = this.removeAllNonPatientData(patient);
     patient.diagnosis = this.intakeService.getPatientHealthConditions();
     if (!!patient) {
@@ -460,9 +459,9 @@ export class PatientDetailsComponent extends BaseComponent
   deletePatientDiagnosis() {
     const diagnosis = this.intakeService.getPatientHealthConditions();
     if (!!diagnosis) {
-      this.deleteDbData(diagnosis[0], APIUrls.PatientDiagnosis)
+      this.deleteDbData(diagnosis[0], APIUrls.PatientDiagnosis);
     }
-  }  
+  }
 
   /**
    * Method - Update patient health conditions
@@ -470,7 +469,7 @@ export class PatientDetailsComponent extends BaseComponent
   updateDoctorsOrders() {
     let patient = this.intakeService.getPatient();
     const diagnosis = [...patient.diagnosis];
-    //remove non-patient data except diagnosis to be sent to data service    
+    //remove non-patient data except diagnosis to be sent to data service
     patient = this.removeAllNonPatientData(patient);
     patient.diagnosis = [...diagnosis];
     if (!!patient) {
@@ -478,52 +477,52 @@ export class PatientDetailsComponent extends BaseComponent
     }
   }
 
-    /**
+  /**
    * Method - Delete patient health conditions
    */
   deleteDoctorsOrders() {
     const diagnosis = this.intakeService.getPatientHealthConditions();
     if (!!diagnosis) {
-      this.deleteDbData(diagnosis[0], APIUrls.PatientDiagnosis)
+      this.deleteDbData(diagnosis[0], APIUrls.PatientDiagnosis);
     }
   }
 
-/**
-  * Method to update database record
-  * @param entity 
-  * @param apiUrl 
-  */
- deleteDbData(entity: any, apiUrl:any) {
-  this.spinnerService.show();
-  let ret = this.dataService
-    .deleteData(entity, apiUrl)
-    .finally(() => {
-      this.spinnerService.hide();
-    })
-    .subscribe(
-      data => {
-        if (ret != undefined) {
-          this.displaySuccessConfirmation();
+  /**
+   * Method to update database record
+   * @param entity
+   * @param apiUrl
+   */
+  deleteDbData(entity: any, apiUrl: any) {
+    this.spinnerService.show();
+    let ret = this.dataService
+      .deleteData(entity, apiUrl)
+      .finally(() => {
+        this.spinnerService.hide();
+      })
+      .subscribe(
+        data => {
+          if (ret != undefined) {
+            this.displaySuccessConfirmation();
+          }
+        },
+        error => {
+          this.notifyService.notify(
+            "error",
+            "Message Error",
+            Message.ErrorUpdateDatabaseRecordFailed +
+              " patient id:" +
+              this.patient.id
+          );
         }
-      },
-      error => {
-        this.notifyService.notify(
-          "error",
-          "Message Error",
-          Message.ErrorUpdateDatabaseRecordFailed +
-            " patient id:" +
-            this.patient.id
-        );
-      }
-    );
-}
+      );
+  }
 
- /**
-  * Method to update database record
-  * @param entity 
-  * @param apiUrl 
-  */
-  updateDbData(entity: any, apiUrl:any) {
+  /**
+   * Method to update database record
+   * @param entity
+   * @param apiUrl
+   */
+  updateDbData(entity: any, apiUrl: any) {
     this.spinnerService.show();
     let ret = this.dataService
       .updateData(entity, apiUrl)

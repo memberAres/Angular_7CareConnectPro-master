@@ -41,7 +41,7 @@ import { SelectItem } from "primeng/api";
 import { Router } from "@angular/router";
 import { takeUntil } from "rxjs/operators";
 import { BaseComponent } from "../../../../shared/core";
-import { Subject } from 'rxjs';
+import { Subject } from "rxjs";
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -142,10 +142,9 @@ export class PatientInTakeStep1Component extends BaseComponent
     this.getSupplementaryCodes();
     this.updateStatus.subscribe(data => {
       this.isEditMode = false;
-    })
+    });
   }
 
-  
   /**
    * Method - Retrieve race and gender codes
    */
@@ -267,7 +266,7 @@ export class PatientInTakeStep1Component extends BaseComponent
    * Method - Submit the form
    */
   submitForm() {
-      this.updateIdentContacts();
+    this.updateIdentContacts();
     this.intakeService.updatePatient(this.patient);
     let userAction: EditHelperUserAction = {
       actionType: EditHelperActionType.add,
@@ -492,7 +491,7 @@ export class PatientInTakeStep1Component extends BaseComponent
         Date.parse(this.patient.dateOfBirth.toString())
       );
     }
-    if (isSaved === true) {      
+    if (isSaved === true) {
       this.patient.dateOfBirth = this.patientDateOfBirth;
     } else {
       if (this.patient.dateOfBirth != undefined) {
