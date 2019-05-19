@@ -42,3 +42,12 @@ ul.tile_list li#li1{
 .app-ho2-form-label{
     padding-top: 5px;
   }
+  @media screen and (max-width: 575px){
+    select{
+        width: 100% !important;
+        font-size: 11px;
+    }
+    select.form-control > option{
+        font-size: 11px !important;
+    }
+  }
