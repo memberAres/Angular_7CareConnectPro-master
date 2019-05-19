@@ -85,9 +85,10 @@
             </div>
             <div class="row justify-content-center" *ngIf="isNewRecord === true" style="padding-top: 15px">
                 <div class="col-sm">
-                    <input class="btn btn-info" type="button" name="Cancel" value="Cancel" (click)="cancel()" />
-                    <input class="btn btn-info" type="button" name="Back" value="Back" (click)="goToPrev()" style="padding-left:5px;"/>
-                    <input class="btn btn-info" type="submit" name="Submit" value="Submit" (click)="submitForm()" style="padding-left:5px;"/>
+                    <input class="btn btn-info" type="button" name="Cancel" value="Cancel" (click)="cancel()" style="padding-left: 9px;padding-right: 9px;" />
+                    <input class="btn btn-info" type="button" name="Back" value="Back" (click)="goToPrev()" style="padding-left: 9px;padding-right: 9px;margin-left: 1px;
+                    margin-right: 1px;"/>
+                    <input class="btn btn-info" type="submit" name="Submit" value="Submit" (click)="submitForm()" style="padding-left: 9px;padding-right: 9px;"/>
                 </div>
             </div>
         </div>

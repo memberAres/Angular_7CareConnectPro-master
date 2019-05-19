@@ -372,6 +372,11 @@ html body .m-t-40 {
     font-size: 13px;
     font-weight: bold;
 }
+@media screen and (max-width: 575px){
+    .app-ho2-form-label{
+      text-align: left;
+    }
+  }
 .app-ho2-mt-label {
     padding-top: 10px;
     color: #403f3f;

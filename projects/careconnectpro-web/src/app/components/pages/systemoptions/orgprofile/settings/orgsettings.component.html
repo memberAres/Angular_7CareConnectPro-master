@@ -6,16 +6,19 @@
                     <ng-template #body>
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-3 app-ho2-form-label">
+                                <div class="col-7" style="padding:0px">
+                                
                                 </div>
-                                <div class="col-md-8 app-ho2-edit-right">
-                                    <ho2edithelper activeAction="0" (actionSelected)="saveChanges1($event)" [saveStatus]="saveStatus1"></ho2edithelper>
-                                </div>
+                                <div class="col-5">
+                                    <div class="col-md app-ho2-edit-right">
+                                        <ho2edithelper activeAction="0" showDelete="false" (actionSelected)="saveChanges1($event)" [saveStatus]="saveStatus1"></ho2edithelper>
+                                    </div>
+                                </div>  
                             </div>
-                            <div class="row">
+                            <div class="row  justify-content-center">
                                 <div class="col-md-3 app-ho2-form-label">
                                     <div *ngIf="!isEditMode1" style="text-align:left">
-                                        <img [src]="getCompanyImg()" alt="Company Logo" width="300" height="200">
+                                        <img [src]="getCompanyImg()" alt="Company Logo" class="img" width="300" height="200">
                                     </div>
                                     <div *ngIf="isEditMode1">
                                         <p-fileUpload name="CompLogos[]" chooseLabel="Upload Logo" url="{{ mediaurl }}" (onUpload)="onUpload($event)"
@@ -50,16 +53,18 @@
             <form novalidate="" #f2="ngForm" (ngSubmit)="f2.form.valid ? saveUpdate2(): ''" class="m-t-40 tab-wizard wizard-circle wizard clearfix" role="application" id="f2">
                 <ho2-accordion titleName="Default Theme" [titleClassName]="localstore.getThemeBackground()">
                     <ng-template #body>
-                        <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <td class="app-ho2-edit-right">
-                                        <ho2edithelper activeAction="0" (actionSelected)="saveChanges2($event)" [saveStatus]="saveStatus2"></ho2edithelper>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align:left" colspan="4">
-                                        <ul id="themecolors" class="m-t-20">
+                        <div class="row">
+                                <div class="col-7" style="padding:0px">
+                                    
+                                </div>
+                                <div class="col-5">
+                                    <div class="col-md app-ho2-edit-right">
+                                        <ho2edithelper activeAction="0" showDelete="false" (actionSelected)="saveChanges2($event)" [saveStatus]="saveStatus2"></ho2edithelper>
+                                    </div>
+                                </div>               
+                            </div>
+                            <div class="row justify-content-center">
+                                    <ul id="themecolors" class="m-t-20">
                                             <li><b>With Light sidebar</b></li>
                                             <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
                                             <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
@@ -75,12 +80,7 @@
                                             <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
                                             <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
                                         </ul>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                            </tfoot>
-                        </table>
+                            </div>
                         <hr>
                     </ng-template>
                 </ho2-accordion>
@@ -93,51 +93,73 @@
             <form novalidate="" #f3="ngForm" (ngSubmit)="f3.form.valid ? saveUpdate3(): ''" class="m-t-40 tab-wizard wizard-circle wizard clearfix" role="application" id="f3">
                 <ho2-accordion titleName="Advanced Features" [titleClassName]="localstore.getThemeBackground()">
                     <ng-template #body>
-                        <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td class="app-ho2-edit-right">
-                                            <ho2edithelper activeAction="0" (actionSelected)="saveChanges3($event)" [saveStatus]="saveStatus3"></ho2edithelper>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align:right;width:50%;">
-                                            <label class="col-md-12">Enable Chat:</label>
-                                        </td>
-                                        <td>
-                                            <p-toggleButton [(ngModel)]="companySettings.enableChat" [disabled]="!isEditMode3" name="enableChat"></p-toggleButton>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align:right;width:50%;">
-                                            <label class="col-md-12">Enable User Theme:</label>
-                                        </td>
-                                        <td>
+                        <div class="row">
+                                <div class="col-7" style="padding:0px">
+                                    
+                                </div>
+                                <div class="col-5">
+                                    <div class="col-md app-ho2-edit-right">
+                                        <ho2edithelper activeAction="0" showDelete="false" (actionSelected)="saveChanges3($event)" [saveStatus]="saveStatus3"></ho2edithelper>
+                                    </div>
+                                </div>               
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-sm-6 app-ho2-form-label">
+                                    <label for="Client_ID" class="app-ho2-form-label">Enable Chat:</label>
+                                </div>
+                                <div class="col-12 col-sm-6 floating-labels">
+                                    <div *ngIf="isEditMode">
+                                    </div>
+                                    <div *ngIf="!isEditMode">
+                                        <p class="col-md-12 app-ho2-mt-label"><p-toggleButton [(ngModel)]="companySettings.enableChat" [disabled]="!isEditMode3" name="enableChat"></p-toggleButton></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-sm-6 app-ho2-form-label">
+                                    <label for="firstName" class="app-ho2-form-label">Enable User Theme:</label>
+                                </div>
+                                <div class="col-12 col-sm-6 floating-labels">
+                                    <div *ngIf="isEditMode">
+                                        
+                                    </div>
+                                    <div *ngIf="!isEditMode">
+                                        <p class="col-md-12 app-ho2-mt-label">
                                             <p-toggleButton [(ngModel)]="companySettings.enableUserTheme" [disabled]="!isEditMode3" name="enableUserTheme"></p-toggleButton>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align:right;width:50%;">
-                                            <label class="col-md-12">Enable Messaging Feature:</label>
-                                        </td>
-                                        <td>
-                                            <p-toggleButton [(ngModel)]="companySettings.enableMessages" [disabled]="!isEditMode3" name="enableMessages"></p-toggleButton>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align:right;width:50%;">
-                                            <label class="col-md-12">Enable Broadcast Messages:</label>
-                                        </td>
-                                        <td>
-                                            <p-toggleButton [(ngModel)]="companySettings.enableBroadcastMsgs" [disabled]="!isEditMode3" name="enableBroadcast"></p-toggleButton>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <hr>
-                        </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                    <div class="col-12 col-sm-6 app-ho2-form-label">
+                                        <label for="firstName" class="app-ho2-form-label">Enable Messaging Feature:</label>
+                                    </div>
+                                    <div class="col-12 col-sm-6 floating-labels">
+                                        <div *ngIf="isEditMode">
+                                            
+                                        </div>
+                                        <div *ngIf="!isEditMode">
+                                            <p class="col-md-12 app-ho2-mt-label">
+                                                <p-toggleButton [(ngModel)]="companySettings.enableMessages" [disabled]="!isEditMode3" name="enableMessages"></p-toggleButton>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                        <div class="col-12 col-sm-6 app-ho2-form-label">
+                                            <label for="firstName" class="app-ho2-form-label">Enable Broadcast Messages:</label>
+                                        </div>
+                                        <div class="col-12 col-sm-6 floating-labels">
+                                            <div *ngIf="isEditMode">
+                                                
+                                            </div>
+                                            <div *ngIf="!isEditMode">
+                                                <p class="col-md-12 app-ho2-mt-label">
+                                                    <p-toggleButton [(ngModel)]="companySettings.enableBroadcastMsgs" [disabled]="!isEditMode3" name="enableBroadcast"></p-toggleButton>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
                     </ng-template>
                 </ho2-accordion>
             </form>

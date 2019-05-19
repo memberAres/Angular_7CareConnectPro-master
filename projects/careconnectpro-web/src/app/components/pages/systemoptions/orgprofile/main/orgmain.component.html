@@ -4,56 +4,90 @@
         <div class="col-md-12" style="padding:0px;">
             <ho2-accordion titleName="Agency Information" [titleClassName]="localstore.getThemeBackground()">
                 <ng-template #body>
-                    <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td class="app-ho2-edit-right">
-                                        <ho2edithelper activeAction="0" (actionSelected)="saveChanges3($event)" [saveStatus]="saveStatus3"></ho2edithelper>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align:right;width:50%;">
-                                        <label class="col-md-12">Client ID:</label>
-                                    </td>
-                                    <td>
-                                        <p class="app-ho2-mt-label">{{ companyInfo?.normalizedId }} </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align:right;width:50%;">
-                                        <label class="col-md-12">Name of Organization:</label>
-                                    </td>
-                                    <td>
-                                        <p class="app-ho2-mt-label">{{ companyInfo?.name }} </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align:right;width:50%;">
-                                        <label class="col-md-12">Email:</label>
-                                    </td>
-                                    <td>
+                        <div class="row">
+                                <div class="col-7" style="padding:0px">
+                                    
+                                </div>
+                                <div class="col-5">
+                                    <div class="col-md app-ho2-edit-right">
+                                            <ho2edithelper activeAction="0" showDelete="false" (actionSelected)="editEventSubmit($event)" [saveStatus]="saveStatus"></ho2edithelper>
+                                            
+                                    </div>
+                                </div>               
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-sm-3 app-ho2-form-label">
+                                    <label for="Client_ID" class="app-ho2-form-label">Client ID:</label>
+                                </div>
+                                <div class="col-12 col-sm-5 floating-labels">
+                                    <div *ngIf="isEditMode">
+                                    </div>
+                                    <div *ngIf="!isEditMode">
+                                        <p class="col-md-12 app-ho2-mt-label">{{ companyInfo?.normalizedId }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-sm-3 app-ho2-form-label">
+                                    <label for="firstName" class="app-ho2-form-label">Name of Organization:</label>
+                                </div>
+                                <div class="col-12 col-sm-5 floating-labels">
+                                    <div *ngIf="isEditMode">
+                                        
+                                    </div>
+                                    <div *ngIf="!isEditMode">
+                                        <p class="col-md-12 app-ho2-mt-label">{{ companyInfo?.name }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-sm-3 app-ho2-form-label">
+                                    <label for="lastName" class="app-ho2-form-label">Email:</label>
+                                </div>
+                                <div class="col-12 col-sm-5 floating-labels">
                                         <div *ngIf="isEditMode">
-                                            <input type="text" pInputText class="form-control" name="email" id="email" required [(ngModel)]="companyInfo.email" #email="ngModel">
-                                            <span class="bar"></span>
-                                            <span *ngIf="f1.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': email.valid, 'glyphicon-remove' : !email.valid}" aria-hidden="true"></span>
-                                            <div *ngIf="(f1.submitted && !email.valid) || (email.invalid && (email.dirty || email.touched)) || (!f1.form.valid && companyInfo.email === undefined) || (!f1.form.valid && companyInfo.email === '')" class="text-danger">
-                                                <div class="app-form-validation-error">
-                                                    Email is required
+                                                <input type="text" pInputText class="form-control" name="email" id="email" required [(ngModel)]="companyInfo.email" #email="ngModel">
+                                                <span class="bar"></span>
+                                                <span *ngIf="f1.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': email.valid, 'glyphicon-remove' : !email.valid}" aria-hidden="true"></span>
+                                                <div *ngIf="(f1.submitted && !email.valid) || (email.invalid && (email.dirty || email.touched)) || (!f1.form.valid && companyInfo.email === undefined) || (!f1.form.valid && companyInfo.email === '')" class="text-danger">
+                                                    <div class="app-form-validation-error">
+                                                        Email is required
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div *ngIf="!isEditMode">
-                                            <p class="col-md-12 app-ho2-mt-label">{{ companyInfo?.email }}</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align:right;width:50%;">
-                                        <label class="col-md-12">Phone No:</label>
-                                    </td>
-                                    <td>
-                                            <div *ngIf="isEditMode">
+                                            <div *ngIf="!isEditMode">
+                                                <p class="col-md-12 app-ho2-mt-label">{{ companyInfo?.email }}</p>
+                                            </div>
+                                </div>
+                            </div>
+                        
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-sm-3 app-ho2-form-label">
+                                    <label for="suffixCodes" class="app-ho2-form-label">Phone No:</label>
+                                </div>
+                                <div class="col-12 col-sm-5 floating-labels">
+                                    <div *ngIf="isEditMode">
+                                            <input type="text" pInputText class="form-control" name="phone" id="phone" required [(ngModel)]="companyInfo.phone" #phone="ngModel">
+                                            <span class="bar"></span>
+                                            <span *ngIf="f1.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': phone.valid, 'glyphicon-remove' : !phone.valid}" aria-hidden="true"></span>
+                                            <div *ngIf="(f1.submitted && !phone.valid) || (phone.invalid && (phone.dirty || phone.touched)) || (!f1.form.valid && companyInfo.phone === undefined) || (!f1.form.valid && companyInfo.phone === '')" class="text-danger">
+                                                <div class="app-form-validation-error">
+                                                    Phone is required
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div *ngIf="!isEditMode">
+                                        <p class="col-md-12 app-ho2-mt-label">{{ companyInfo?.phone }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-sm-3 app-ho2-form-label">
+                                    <label for="dateofBirth" class="app-ho2-form-label">Website URL:</label>
+                                </div>
+                                <div class="col-12 col-sm-5">
+                                        <div *ngIf="isEditMode">
                                                 <input type="text" pInputText class="form-control" name="phone" id="phone" required [(ngModel)]="companyInfo.phone" #phone="ngModel">
                                                 <span class="bar"></span>
                                                 <span *ngIf="f1.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': phone.valid, 'glyphicon-remove' : !phone.valid}" aria-hidden="true"></span>
@@ -66,30 +100,9 @@
                                             <div *ngIf="!isEditMode">
                                                 <p class="col-md-12 app-ho2-mt-label">{{ companyInfo?.phone }}</p>
                                             </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                        <td style="text-align:right;width:50%;">
-                                            <label class="col-md-12">Website URL:</label>
-                                        </td>
-                                        <td>
-                                            <div *ngIf="isEditMode">
-                                                <input type="text" pInputText class="form-control" name="url" id="url" required [(ngModel)]="companyInfo.url" #url="ngModel">
-                                                <span class="bar"></span>
-                                                <span *ngIf="f1.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': phone.valid, 'glyphicon-remove' : !phone.valid}" aria-hidden="true"></span>
-                                                <div *ngIf="(f1.submitted && !url.valid) || (url.invalid && (url.dirty || url.touched)) || (!f1.form.valid && companyInfo.url === undefined) || (!f1.form.valid && companyInfo.url === '')" class="text-danger">
-                                                    <div class="app-form-validation-error">
-                                                        Website URL: is required
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div *ngIf="!isEditMode">
-                                                <p class="col-md-12 app-ho2-mt-label">{{ companyInfo?.url }}</p>
-                                            </div>
-                                        </td>
-                                    </tr>
-                            </tbody>
-                        </table>
+                                </div>
+                            </div>
+                            
                 </ng-template>
             </ho2-accordion>
         </div>

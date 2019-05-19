@@ -39,7 +39,8 @@ import { Router } from "@angular/router";
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: "app-orgsettings",
-  templateUrl: "./orgsettings.component.html"
+  templateUrl: "./orgsettings.component.html",
+  styleUrls: ["./orgsettings.component.css"]
 })
 export class OrgSettingsComponent implements OnInit {
   title: string;

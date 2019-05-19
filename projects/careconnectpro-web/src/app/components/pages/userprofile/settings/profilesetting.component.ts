@@ -44,7 +44,8 @@ import { takeUntil } from "rxjs/operators";
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: "app-userprofilesetting",
-  templateUrl: "./profilesetting.component.html"
+  templateUrl: "./profilesetting.component.html",
+  styleUrls :["./profilesetting.component.css"]
 })
 export class UserProfileSettingComponent extends BaseComponent
   implements OnInit {

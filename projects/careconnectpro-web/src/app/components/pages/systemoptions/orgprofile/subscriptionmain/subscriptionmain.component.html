@@ -3,106 +3,77 @@
         <div class="col-md-12">
             <ho2-accordion titleName="Active Subscription" [titleClassName]="localstore.getThemeBackground()">
                 <ng-template #body>
-                    <!-- <div class="container">
                         <div class="row">
-                            <div class="col-md-3 app-ho2-form-label">
+                                <div class="col-12">
+                                    <div class="col-md app-ho2-edit-right" style="text-align: right">
+                                        <button class="btn btn-success" (click)="routeToRenewSubscription()" >Renew</button>
+                                    </div>
+                                </div>               
                             </div>
-                            <div class="col-md-9 app-ho2-edit-right" style="text-align: right">
-                                <button class="btn btn-success" (click)="routeToRenewSubscription()">Renew</button>
-                            </div>
-                        </div>   
-                        <div class="row">
-                            <div class="col-md-3 app-ho2-form-label">
-                                <label class="app-ho2-form-label">Subscription ID:</label>
-                            </div>
-                            <div class="col-md-7">
-                                <p class="col-md-12 app-ho2-mt-label">{{ companyService.activeSubscription?.normalizedId }} </p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 app-ho2-form-label">
-                                <label class="app-ho2-form-label">Subscription Package:</label>
-                            </div>
-                            <div class="col-md-7">
-                                <p class="col-md-12 app-ho2-mt-label">{{ companyService.activeSubscription?.packageId }} </p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 app-ho2-form-label">
-                                <label class="app-ho2-form-label">Total Amount:</label>
-                            </div>
-                            <div class="col-md-7">
-                                <p class="col-md-12 app-ho2-mt-label">{{ companyService.activeSubscription?.totalAmount | currency:'USD': 'symbol' }} </p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 app-ho2-form-label">
-                                <label class="app-ho2-form-label">Start Date:</label>
-                            </div>
-                            <div class="col-md-7">
-                                <p class="col-md-12 app-ho2-mt-label">{{ companyService.activeSubscription?.startDate | date }} </p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 app-ho2-form-label">
-                                <label class="app-ho2-form-label">End Date:</label>
-                            </div>
-                            <div class="col-md-7">
-                                <p class="col-md-12 app-ho2-mt-label">{{ companyService.activeSubscription?.endDate | date }} </p>
-                            </div>
-                        </div>
-                    </div> -->
-                    <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td class="app-ho2-edit-right" align="right">
-                                        <button class="btn btn-success" (click)="routeToRenewSubscription()">Renew</button>
-                                        <!-- <ho2edithelper activeAction="0" (actionSelected)="saveChanges3($event)" [saveStatus]="saveStatus3"></ho2edithelper> -->
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align:right;width:50%;">
-                                        <label class="col-md-12">Subscription ID:</label>
-                                    </td>
-                                    <td>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-sm-3 app-ho2-form-label">
+                                    <label for="Client_ID" class="app-ho2-form-label">Subscription ID:</label>
+                                </div>
+                                <div class="col-12 col-sm-5 floating-labels">
+                                    <div *ngIf="isEditMode">
+                                    </div>
+                                    <div *ngIf="!isEditMode">
                                         <p class="col-md-12 app-ho2-mt-label">{{ companyService.activeSubscription?.normalizedId }} </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align:right;width:50%;">
-                                        <label class="col-md-12">Subscription Package:</label>
-                                    </td>
-                                    <td>
-                                       <p class="col-md-12 app-ho2-mt-label">{{ companyService.activeSubscription?.packageId }} </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align:right;width:50%;">
-                                        <label class="col-md-12">Total Amount:</label>
-                                    </td>
-                                    <td>
-                                        <p class="col-md-12 app-ho2-mt-label">{{ companyService.activeSubscription?.totalAmount | currency:'USD': 'symbol' }} </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align:right;width:50%;">
-                                        <label class="col-md-12">Start Date:</label>
-                                    </td>
-                                    <td>
-                                        <p class="col-md-12 app-ho2-mt-label">{{ companyService.activeSubscription?.startDate | date }} </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                        <td style="text-align:right;width:50%;">
-                                            <label class="col-md-12">End Date:</label>
-                                        </td>
-                                        <td>
-                                            <p class="col-md-12 app-ho2-mt-label">{{ companyService.activeSubscription?.endDate | date }} </p>
-                                        </td>
-                                    </tr>
-                            </tbody>
-                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-sm-3 app-ho2-form-label">
+                                    <label for="firstName" class="app-ho2-form-label">Subscription Package:</label>
+                                </div>
+                                <div class="col-12 col-sm-5 floating-labels">
+                                    <div *ngIf="isEditMode">
+                                        
+                                    </div>
+                                    <div *ngIf="!isEditMode">
+                                        <p class="col-md-12 app-ho2-mt-label">{{ companyService.activeSubscription?.packageId }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-sm-3 app-ho2-form-label">
+                                    <label for="lastName" class="app-ho2-form-label">Total Amount:</label>
+                                </div>
+                                <div class="col-12 col-sm-5 floating-labels">
+                                        <div *ngIf="isEditMode">
+                                        </div>
+                                        <div *ngIf="!isEditMode">
+                                            <p class="col-md-12 app-ho2-mt-label">{{ companyService.activeSubscription?.totalAmount | currency:'USD': 'symbol' }} </p>
+                                        </div>
+                                </div>
+                            </div>
+                        
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-sm-3 app-ho2-form-label">
+                                    <label for="suffixCodes" class="app-ho2-form-label">Start Date:</label>
+                                </div>
+                                <div class="col-12 col-sm-5 floating-labels">
+                                    <div *ngIf="isEditMode">
+                                    </div>
+                                    <div *ngIf="!isEditMode">
+                                        <p class="col-md-12 app-ho2-mt-label">{{ companyService.activeSubscription?.startDate | date }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-sm-3 app-ho2-form-label">
+                                    <label for="dateofBirth" class="app-ho2-form-label">End Date:</label>
+                                </div>
+                                <div class="col-12 col-sm-5">
+                                        <div *ngIf="isEditMode">
+                                        </div>
+                                        <div *ngIf="!isEditMode">
+                                            <p class="col-md-12 app-ho2-mt-label">{{ companyService.activeSubscription?.endDate | date }}</p>
+                                        </div>
+                                </div>
+                            </div>
+                            
 
                 </ng-template>
             </ho2-accordion>

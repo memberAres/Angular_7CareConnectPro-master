@@ -42,3 +42,12 @@ li#li1{
     border-color:#007ad9;
     /* border-width:  */
 }
+
+.app-ho2-form-label{
+    padding-top: 5px;
+  }
+  @media screen and (max-width: 575px){
+    .app-ho2-form-label{
+      text-align: left;
+    }
+  }
