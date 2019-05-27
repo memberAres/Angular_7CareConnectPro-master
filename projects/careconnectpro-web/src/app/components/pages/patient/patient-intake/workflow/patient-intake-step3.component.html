@@ -102,13 +102,16 @@
         </div>
         <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
-                <input type="text" pInputText class="form-control" placeholder="Enter home phone" name="homephone" id="homephone" required [(ngModel)]="relativeHomePhone" #homephone="ngModel">
+                <input type="text" pInputText class="form-control" pattern="[0-9]{1,25}" placeholder="Enter home phone" name="homephone" id="homephone" required [(ngModel)]="relativeHomePhone" #homephone="ngModel">
                 <span class="bar"></span>
                 <span *ngIf="f2.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': homephone.valid, 'glyphicon-remove' : !homephone.valid}" aria-hidden="true"></span>
                 <div *ngIf="(f2.submitted && !homephone.valid) || (homephone.invalid && (homephone.dirty || homephone.touched))" class="text-danger">
                     <div *ngIf="homephone.errors.required" class="app-form-validation-error">
                         Patient home phone required
                     </div>
+                    <div *ngIf="homephone.errors.pattern" class="app-form-validation-error">
+                        Please enter a valid phoneNumber.
+                      </div>
                 </div>
             </div>
             <div *ngIf="!isEditMode">
@@ -122,12 +125,15 @@
         </div>
         <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
-                <input type="text" pInputText class="form-control" placeholder="Enter cell phone" name="cellphone" id="cellphone" required [(ngModel)]="relativeCellPhone" #cellphone="ngModel">
+                <input type="text" pInputText class="form-control" pattern="[0-9]{1,25}" placeholder="Enter cell phone" name="cellphone" id="cellphone" required [(ngModel)]="relativeCellPhone" #cellphone="ngModel">
                 <span class="bar"></span>
                 <span *ngIf="f2.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': cellphone.valid, 'glyphicon-remove' : !cellphone.valid}" aria-hidden="true"></span>
                 <div *ngIf="(f2.submitted && !cellphone.valid) || (cellphone.invalid && (cellphone.dirty || cellphone.touched))" class="text-danger">
                     <div *ngIf="cellphone.errors.required" class="app-form-validation-error">
                         Relative cell phone required
+                    </div>
+                    <div *ngIf="cellphone.errors.pattern" class="app-form-validation-error">
+                        Please enter a valid cellphone.
                     </div>
                 </div>
             </div>

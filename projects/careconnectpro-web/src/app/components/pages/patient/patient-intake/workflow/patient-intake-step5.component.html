@@ -34,13 +34,16 @@
         </div>
         <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
-                <input type="text" pInputText class="form-control" placeholder="Enter company phone" name="phone" id="phone" required [(ngModel)]="employerWorkPhone" #phone="ngModel">
+                <input type="text" pInputText class="form-control"  pattern="[0-9]{1,25}" placeholder="Enter company phone" name="phone" id="phone" required [(ngModel)]="employerWorkPhone" #phone="ngModel">
                 <span class="bar"></span>
                 <span *ngIf="f2.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': phone.valid, 'glyphicon-remove' : !phone.valid}" aria-hidden="true"></span>
                 <div *ngIf="(f2.submitted && !phone.valid) || (phone.invalid && (phone.dirty || phone.touched))" class="text-danger">
                     <div *ngIf="phone.errors.required" class="app-form-validation-error">
                         Company phone is required
                     </div>
+                    <div *ngIf="phone.errors.pattern" class="app-form-validation-error">
+                        Please enter a valid phoneNumber.
+                      </div>
                 </div>
             </div>
             <div *ngIf="!isEditMode">

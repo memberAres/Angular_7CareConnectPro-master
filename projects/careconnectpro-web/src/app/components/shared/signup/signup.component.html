@@ -105,12 +105,15 @@
 
                                                     <td>
                                                         <div *ngIf="!isSubscribeFinished">
-                                                            <input type="text" class="form-control" data-mask="(999) 999-9999" id="userphone" name="userphone" placeholder="Enter your phone number" required [(ngModel)]="signupmodel.userphone" #userphone="ngModel">
+                                                            <input type="text" class="form-control"  pattern="[0-9]{1,25}" data-mask="(999) 999-9999" id="userphone" name="userphone" placeholder="Enter your phone number" required [(ngModel)]="signupmodel.userphone" #userphone="ngModel">
                                                             <span *ngIf="f1.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': userphone.valid, 'glyphicon-remove' : !userphone.valid}" aria-hidden="true"></span>
                                                             <div *ngIf="(f1.submitted && !userphone.valid) || (userphone.invalid && (userphone.dirty || userphone.touched))" class="text-danger">
                                                                 <div *ngIf="userphone.errors.required">
                                                                     Phone is required
                                                                 </div>
+                                                                <div *ngIf="userphone.errors.pattern" class="app-form-validation-error">
+                                                                    Please enter a valid phoneNumber.
+                                                                  </div>
                                                             </div>
                                                             </div>
                                                             <div *ngIf="isSubscribeFinished">
@@ -446,11 +449,14 @@
                                                                                         <label for="cardnumber">Credit Card Number </label><span class="text-danger">*</span>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <input type="text" class="form-control" (change)="validateSubForm()" placeholder="" data-mask="9999-9999-9999-9999" name="cardnumber" id="cardnumber" required [(ngModel)]="paymodel.cardnumber" #cardnumber="ngModel">
+                                                                                        <input type="text" class="form-control"  pattern="[0-9]{4,4}-[0-9]{4,4}-[0-9]{4,4}-[0-9]{4,4}" (change)="validateSubForm()" placeholder="" data-mask="9999-9999-9999-9999" name="cardnumber" id="cardnumber" required [(ngModel)]="paymodel.cardnumber" #cardnumber="ngModel">
                                                                                         <span *ngIf="f2.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': cardnumber.valid, 'glyphicon-remove' : !cardnumber.valid}" aria-hidden="true"></span>
                                                                                         <div *ngIf="(f2.submitted && !cardnumber.valid) || (cardnumber.invalid && (cardnumber.dirty || cardnumber.touched))" class="text-danger">
                                                                                             <div *ngIf="cardnumber.errors.required">
                                                                                                 Credit Card number is required
+                                                                                            </div>
+                                                                                            <div *ngIf="cardnumber.errors.pattern" class="app-form-validation-error">
+                                                                                                Please enter a valid Employee SSN(XXXX-XXXX-XXXX-XXXX).
                                                                                             </div>
                                                                                         </div>
                                                                                     </td>
@@ -486,11 +492,14 @@
                                                                                         <label for="cardcvv">CVV </label><span class="text-danger">*</span>
                                                                                     </td>
                                                                                     <td >
-                                                                                        <input type="text" style="width:125px;" class="form-control" placeholder="Enter credit card CVV" name="cardcvv" id="cardcvv" required [(ngModel)]="paymodel.cardcvv" #cardcvv="ngModel">
+                                                                                        <input type="text" pattern="[0-9]{3,3}" style="width:125px;" class="form-control" placeholder="Enter credit card CVV" name="cardcvv" id="cardcvv" required [(ngModel)]="paymodel.cardcvv" #cardcvv="ngModel">
                                                                                         <span *ngIf="f2.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': cardcvv.valid, 'glyphicon-remove' : !cardcvv.valid}" aria-hidden="true"></span>
                                                                                         <div *ngIf="(f2.submitted && !cardcvv.valid) || (cardcvv.invalid && (cardcvv.dirty || cardcvv.touched))" class="text-danger">
                                                                                             <div *ngIf="cardcvv.errors.required">
                                                                                                 Credit Card CVV is required
+                                                                                            </div>
+                                                                                            <div *ngIf="cardcvv.errors.pattern" class="app-form-validation-error">
+                                                                                                Please enter a valid Credit Card CVV(XXX).
                                                                                             </div>
                                                                                         </div>
                                                                                     </td>

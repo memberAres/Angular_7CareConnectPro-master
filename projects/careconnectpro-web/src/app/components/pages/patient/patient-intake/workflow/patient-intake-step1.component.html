@@ -156,13 +156,16 @@
         </div>
         <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
-                <input type="text" pInputText class="form-control" placeholder="Enter patient SSN" name="patientssn" id="patientssn" required [(ngModel)]="ssn" #patientssn="ngModel">
+                <input type="text" pInputText class="form-control" pattern="[0-9]{3,3}-[0-9]{2,2}-[0-9]{4,4}" placeholder="Enter patient SSN" name="patientssn" id="patientssn" required [(ngModel)]="ssn" #patientssn="ngModel">
                 <span class="bar"></span>
                 <span *ngIf="f2.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': patientssn.valid, 'glyphicon-remove' : !patientssn.valid}" aria-hidden="true"></span>
                 <div *ngIf="(f2.submitted && !patientssn.valid) || (patientssn.invalid && (patientssn.dirty || patientssn.touched))" class="text-danger">
                     <div *ngIf="patientssn.errors.required" class="app-form-validation-error">
                         Patient SSN is required
                     </div>
+                    <div *ngIf="patientssn.errors.pattern" class="app-form-validation-error">
+                        Please enter a valid patient SSN(XXX-XX-XXXX).
+                      </div>
                 </div>
             </div>
             <div *ngIf="!isEditMode">
@@ -190,13 +193,16 @@
         </div>
         <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
-                <input type="text" pInputText class="form-control" placeholder="Enter patient home phone" name="homephone" id="homephone" required [(ngModel)]="patientHomePhone" #homephone="ngModel">
+                <input type="text" pInputText class="form-control" pattern="[0-9]{1,25}" placeholder="Enter patient home phone" name="homephone" id="homephone" required [(ngModel)]="patientHomePhone" #homephone="ngModel">
                 <span class="bar"></span>
                 <span *ngIf="f2.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': homephone.valid, 'glyphicon-remove' : !homephone.valid}" aria-hidden="true"></span>
                 <div *ngIf="(f2.submitted && !homephone.valid) || (homephone.invalid && (homephone.dirty || homephone.touched))" class="text-danger">
                     <div *ngIf="homephone.errors.required" class="app-form-validation-error">
                         Patient home is required
                     </div>
+                    <div *ngIf="homephone.errors.pattern" class="app-form-validation-error">
+                        Please enter a valid phoneNumber.
+                      </div>
                 </div>
             </div>
             <div *ngIf="!isEditMode">
@@ -210,12 +216,24 @@
         </div>
         <div class="col-12 col-sm-7 floating-labels">
             <div *ngIf="isEditMode">
-                <input type="text" pInputText class="form-control" placeholder="Enter patient cell phone" name="cellphone" id="cellphone" [(ngModel)]="patientCellPhone" #cellphone="ngModel">
+                <input type="text" pInputText class="form-control" pattern="[0-9]{1,25}" placeholder="Enter patient cell phone" name="cellphone" id="cellphone" [(ngModel)]="patientCellPhone" #cellphone="ngModel">
                 <span class="bar"></span>
+                <div *ngIf="(f2.submitted && !cellphone.valid) || (cellphone.invalid && (cellphone.dirty || cellphone.touched))" class="text-danger">
+                
+                    <div *ngIf="cellphone.errors.pattern" class="app-form-validation-error">
+                        Please enter a valid cellphone.
+                      </div>
+                </div>
             </div>
             <div *ngIf="!isEditMode">
                 <p class="col-12 app-ho2-mt-label">{{ patientCellPhone }}</p>
             </div>
+            <!-- <div *ngIf="(f2.submitted && !cellphone.valid) || (cellphone.invalid && (cellphone.dirty || cellphone.touched))" class="text-danger">
+                
+                <div *ngIf="cellphone.errors.pattern" class="app-form-validation-error">
+                    Please enter a valid cellphone.
+                  </div>
+            </div> -->
         </div>
     </div>
     <div class="row justify-content-center">

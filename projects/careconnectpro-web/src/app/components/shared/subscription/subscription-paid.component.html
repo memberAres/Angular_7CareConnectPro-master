@@ -181,16 +181,19 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4 app-ho2-form-label">
-                        <label for="cardnumber" class="app-ho2-form-label">Credit Card Number:</label>
+                        <label for="cardnumber" class="app-ho2-form-label">Credit Card Numbermhbjhbjh:</label>
                     </div>
                     <div class="col-md-7 floating-labels">
-                        <input type="text" pInputText class="form-control" placeholder="" data-mask="9999-9999-9999-9999" name="cardnumber" id="cardnumber" required [(ngModel)]="paymodel.cardnumber" #cardnumber="ngModel">
+                        <input type="text" pInputText class="form-control" pattern="[0-9]{4,4}-[0-9]{4,4}-[0-9]{4,4}-[0-9]{4,4}" placeholder="" data-mask="9999-9999-9999-9999" name="cardnumber" id="cardnumber" required [(ngModel)]="paymodel.cardnumber" #cardnumber="ngModel">
                         <span class="bar"></span>
                         <span *ngIf="f3.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': cardnumber.valid, 'glyphicon-remove' : !cardnumber.valid}" aria-hidden="true"></span>
                         <div *ngIf="(f3.submitted && !cardnumber.valid) || (cardnumber.invalid && (cardnumber.dirty || cardnumber.touched))" class="text-danger">
                             <div *ngIf="cardnumber.errors.required" class="app-form-validation-error">
                                 Credit Card number is required
                             </div>
+                            <div *ngIf="cardnumber.errors.pattern" class="app-form-validation-error">
+                                Please enter a valid  Credit Card number(XXXX-XXXX-XXXX-XXXX).
+                              </div>
                         </div>
                     </div>
                 </div>
@@ -235,6 +238,7 @@
                                 <div *ngIf="expireYY.errors.required" class="app-form-validation-error">
                                     Credit card expiration year is required
                                 </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -244,12 +248,15 @@
                         <label for="cardcvv" class="app-ho2-form-label">CVV:</label>
                     </div>
                     <div class="col-md-7 floating-labels" style="max-height:80px">
-                        <input type="text" pInputText class="form-control" placeholder="Enter credit card CVV" name="cardcvv" id="cardcvv" required [(ngModel)]="paymodel.cardcvv" #cardcvv="ngModel">
+                        <input type="text"  pattern="[0-9]{3,3}" pInputText class="form-control" placeholder="Enter credit card CVV" name="cardcvv" id="cardcvv" required [(ngModel)]="paymodel.cardcvv" #cardcvv="ngModel">
                         <span class="bar"></span>
                         <span *ngIf="f3.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': cardcvv.valid, 'glyphicon-remove' : !cardcvv.valid}" aria-hidden="true"></span>
                         <div *ngIf="(f3.submitted && !cardcvv.valid) || (cardcvv.invalid && (cardcvv.dirty || cardcvv.touched))" class="text-danger">
                             <div *ngIf="cardcvv.errors.required" class="app-form-validation-error">
                                 Credit Card CVV is required
+                            </div>
+                            <div *ngIf="cardcvv.errors.pattern" class="app-form-validation-error">
+                                Please enter a valid Credit Card CVV(XXX).
                             </div>
                         </div>
                     </div>
