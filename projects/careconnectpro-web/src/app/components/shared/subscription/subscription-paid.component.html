@@ -1,4 +1,4 @@
-﻿<div class="card">
+<div class="card">
     <div [ngClass]="'card-title ' + localStore.getActiveTheme()">
         <h5><i class="fa fa-edit"></i> {{ step2title }}</h5>
     </div>
@@ -14,7 +14,7 @@
                 <div class="row" *ngFor="let pkg of subPkgDesc">
                     <div class="col-md floating-labels" style="padding-left: 30%;">
                         <div class="demo-radio-button">
-                            <input name="group3" type="radio" [id]="pkg.id" [(ngModel)]="selectedSubPkg.id" [checked]="idx === 0" [value]="pkg.pkgpriceid" >
+                            <input name="group3" type="radio" [id]="pkg.id" [(ngModel)]="selectedSubPkg.id" [checked]="idx === 0" [value]="pkg.pkgPriceId" (change)="onItemChange(selectedSubPkg.id)" >
                             <label [for]="pkg.id">{{ pkg.description }}</label>
                         </div>
                     </div>

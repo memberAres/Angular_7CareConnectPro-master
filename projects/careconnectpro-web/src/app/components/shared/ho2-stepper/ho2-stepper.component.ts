@@ -48,11 +48,11 @@ export class Ho2StepperComponent implements OnInit, OnChanges {
   }
 
   getHeaderClass(step: number): string {
+    // alert(step);
     let status: number = 0;
     if (this.steps !== undefined) {
       status = this.steps[step][1];
     }
-
     switch (status) {
       case 0: {
         return "app-ho2-stepper-header-pending";

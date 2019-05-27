@@ -22,7 +22,7 @@ import {
   AlertService
 } from "service-lib";
 import { Router } from "@angular/router";
-import { MessageService } from "primeng/components/common/messageservice";
+// import { MessageService } from "primeng/components/common/messageservice";
 import { BaseComponent } from "../core/base.component";
 
 @Component({
@@ -31,11 +31,11 @@ import { BaseComponent } from "../core/base.component";
   styleUrls: ["./signup.component.css"]
 })
 export class SignupComponent extends BaseComponent implements OnInit {
-  signupmodel: UserSignup;
-  paymodel: UserPaymentInfo;
+  signupmodel: UserSignup = {};
+  paymodel: UserPaymentInfo = {};
   currMonth = new Date();
   nextMonth = new Date();
-  subsmodel: CompanySubscription;
+  subsmodel: CompanySubscription = {};
   subPkgPrice: SubscriptionPkgPrice[] = [];
   subPkgDesc: SubscriptionPkgDesc[] = [];
   subPkgType: SubscriptionTypes[] = [];
@@ -43,9 +43,9 @@ export class SignupComponent extends BaseComponent implements OnInit {
   countrycodes: any[] = AddressCodes.GlobalCountryCodes;
   ccardTypes: any[] = CreditCardCodes.CCardTypes;
   ccYears: any[] = CreditCardCodes.CCYears;
-  loginRes: UserLogin;
-  signupResp: SignupResponse;
-  selectedSubPkg: SubscriptionPkgDesc;
+  loginRes: UserLogin = {};
+  signupResp: SignupResponse = {};
+  selectedSubPkg: SubscriptionPkgDesc = {};
   selectedSubText: string;
   step2title: string;
 
@@ -69,12 +69,12 @@ export class SignupComponent extends BaseComponent implements OnInit {
   enablesubRemoval: boolean = true;
   isSubscribeFinished: boolean = false;
   currentSubStep: number = 1;
-  userBilling: UserBillingInfo;
+  userBilling: UserBillingInfo = {};
 
   logolighticon = require("../../../../assets/images/logo-light-icon2.png");
 
   constructor(
-    public messageservice: MessageService,
+    // public messageservice: MessageService,
     public authService: AuthService,
     public router: Router,
     public billingService: BillingService,

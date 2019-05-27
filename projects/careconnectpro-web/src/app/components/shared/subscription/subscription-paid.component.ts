@@ -94,6 +94,7 @@ export class SubscriptionPaidComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.subPkgPrice);
     this.initData();
     this.defineSteps();
     this.showPage1 = true;
