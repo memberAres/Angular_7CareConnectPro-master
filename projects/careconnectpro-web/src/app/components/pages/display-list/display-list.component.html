@@ -4,64 +4,33 @@
     <div class="content-body">
 
         <div *ngIf="type === 'emp'">
-          <!-- <table class="table table-hover no-wrap" class="col-sm-12">
-            <tbody>
-            <tr class="unread" *ngFor="let l of lists" >
-              <td class="hidden-xs-down" (click)="onRowSelectEmployee(l)" style="cursor: pointer">
-                <img [src]="getEmployeeImg(l.photoName)" alt="" width="20"
-                     class="img-circle"/>
-              </td>
-              <td class="max-texts" (click)="onRowSelectEmployee(l)" style="cursor: pointer">
-                <span>{{l.firstName}} {{l.lastName}}</span>
-              </td>
-              <td class="text-right" (click)="onRowSelectEmployee(l)" style="cursor: pointer">Occupation: {{l.jobTitle}}</td>
-            </tr>
-            </tbody>
-          </table> -->
-          <!-- <p-dataTable #dtcomplocations [value]="lists"  [scrollable]="true" scrollHeight="200px" selectionMode="single" [(selection)]="selectedAddress"
-                                 (onRowSelect)="onRowSelectEmployee(1)" dataKey="id"
-                                 [loading]="isLoading" loadingIcon="fa-spinner" [responsive]="true" [stacked]="stacked">
-                      
-                        <p-column field="firstName" header="Address 2" [sortable]="true"></p-column>
-                        <p-column field="jobTitle" header="City" [sortable]="true"></p-column>
-          </p-dataTable> -->
           <p-table [columns]="cols" [value]="lists" selectionMode="single" [(selection)]="selectedAddress" [scrollable]="true" 
               [responsive]="true" scrollHeight="200px"(onRowSelect)="onRowSelectEmployee(1)">
 
               <ng-template pTemplate="header" let-columns>
                   <tr>
-                      <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                      <th *ngFor="let col of columns" [pSortableColumn]="col.field" style="text-align: center;cursor: pointer">
                           {{col.header}}
                           <p-sortIcon [field]="col.field"></p-sortIcon>
                       </th>
                   </tr>
               </ng-template>
               <ng-template pTemplate="body" let-rowData let-columns="columns">
-                  <tr class="unread" *ngFor="let l of lists" >
-                      <td class="max-texts" (click)="onRowSelectEmployee(l)" style="cursor: pointer">
-                        <span><img [src]="getEmployeeImg(l.photoName)" alt="" width="20"
-                          class="img-circle"/>{{l.firstName}} {{l.lastName}}</span>
+                  <tr class="unread">
+                      <td *ngFor="let col of columns"   (click)="onRowSelectEmployee(rowData)"  style="text-align: center;cursor: pointer">
+                          
+                          <div *ngIf = "col.field==='photoName'">
+                              <span><img [src]="getEmployeeImg(rowData[col.field])" alt="" width="20"/></span>
+                          </div>
+                          <div *ngIf = "col.field!=='photoName'">
+                              {{rowData[col.field]}}
+                          </div>
                       </td>
-                      <td class="max-texts" (click)="onRowSelectEmployee(l)" style="cursor: pointer">Occupation: {{l.jobTitle}}</td>
                     </tr>
               </ng-template> 
           </p-table>
         </div>
           <div  *ngIf="type === 'physician'">
-                    <!-- <table class="table table-hover no-wrap">
-                      <tbody>
-                      <tr class="unread" *ngFor="let l of lists" >
-                        <td class="hidden-xs-down" (click)="onRowSelectPhysician(l)" style="cursor: pointer">
-                          <img [src]="getPhysicianImg(l.photoName)" alt="" width="20"
-                               class="img-circle"/>
-                        </td>
-                        <td class="max-texts" (click)="onRowSelectPhysician(l)" style="cursor: pointer">
-                          <span>{{l.firstName}} {{l.lastName}}</span>
-                        </td>
-                        <td class="text-right" (click)="onRowSelectPhysician(l)" style="cursor: pointer">Occupation: {{l.jobTitle}}</td>
-                      </tr>
-                      </tbody>
-                    </table> -->
                     <p-table [columns]="cols" [value]="lists" selectionMode="single" [(selection)]="selectedAddress" [scrollable]="true" 
                         [responsive]="true" scrollHeight="200px"(onRowSelect)="onRowSelectPhysician(1)">
 
@@ -74,33 +43,20 @@
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-rowData let-columns="columns">
-                            <tr class="unread" *ngFor="let l of lists" >
-                                <td class="max-texts" (click)="onRowSelectPhysician(l)" style="cursor: pointer">
-                                  <span><img [src]="getPhysicianImg(l.photoName)" alt="" width="20"
-                                    class="img-circle"/>{{l.firstName}} {{l.lastName}}</span>
-                                </td>
-                                <td class="max-texts" (click)="onRowSelectPhysician(l)" style="cursor: pointer">Occupation: {{l.jobTitle}}</td>
-                              </tr>
+                              <tr class="unread">
+                                  <td *ngFor="let col of columns"   (click)="onRowSelectPhysician(rowData)"  style="text-align: center;cursor: pointer">
+                                      <div *ngIf = "col.field==='photoName'">
+                                          <span><img [src]="getPhysicianImg(rowData[col.field])" alt="" width="20"/></span>
+                                      </div>
+                                      <div *ngIf = "col.field!=='photoName'">
+                                          {{rowData[col.field]}}
+                                      </div>
+                                  </td>
+                                </tr>
                         </ng-template> 
                     </p-table>
           </div>
-
-
           <div *ngIf="type === 'vendor'">
-                  <!-- <table class="table table-hover no-wrap">
-                    <tbody>
-                    <tr class="unread" *ngFor="let l of lists" >
-                      <td class="hidden-xs-down" (click)="onRowSelectVendor(l)" style="cursor: pointer">
-                        <img [src]="getVendorImg(l.photoName)" alt="" width="20"
-                             class="img-circle"/>
-                      </td>
-                      <td class="max-texts" (click)="onRowSelectVendor(l)" style="cursor: pointer">
-                        <span>{{l.firstName}} {{l.lastName}}</span>
-                      </td>
-                      <td class="text-right" (click)="onRowSelectVendor(l)" style="cursor: pointer">Occupation: {{l.jobTitle}}</td>
-                    </tr>
-                    </tbody>
-                  </table> -->
                   <p-table [columns]="cols" [value]="lists" selectionMode="single" [(selection)]="selectedAddress" [scrollable]="true" 
                         [responsive]="true" scrollHeight="200px"(onRowSelect)="onRowSelectVendor(1)">
 
@@ -113,32 +69,28 @@
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-rowData let-columns="columns">
-                            <tr class="unread" *ngFor="let l of lists" >
+                            <!-- <tr class="unread" *ngFor="let l of lists" >
                                 <td class="max-texts" (click)="onRowSelectVendor(l)" style="cursor: pointer">
                                   <span><img [src]="getVendorImg(l.photoName)" alt="" width="20"
                                     class="img-circle"/>{{l.firstName}} {{l.lastName}}</span>
                                 </td>
                                 <td class="max-texts" (click)="onRowSelectVendor(l)" style="cursor: pointer">Occupation: {{l.jobTitle}}</td>
-                              </tr>
+                              </tr> -->
+                              <tr class="unread">
+                                  <td *ngFor="let col of columns"   (click)="onRowSelectVendor(rowData)"  style="text-align: center;cursor: pointer">
+                                      <div *ngIf = "col.field==='photoName'">
+                                          <span><img [src]="getVendorImg(rowData[col.field])" alt="" width="20"/></span>
+                                      </div>
+                                      <div *ngIf = "col.field!=='photoName'">
+                                          {{rowData[col.field]}}
+                                      </div>
+                                  </td>
+                                </tr>
                         </ng-template> 
                     </p-table>
             </div>
 
             <div *ngIf="type === 'patient'">
-                      <!-- <table class="table table-hover no-wrap">
-                        <tbody>
-                        <tr class="unread" *ngFor="let l of lists" >
-                          <td class="hidden-xs-down" (click)="onRowSelectPatient(l)" style="cursor: pointer">
-                            <img [src]="getPatientImg(l.photoName)" alt="" width="20"
-                                 class="img-circle"/>
-                          </td>
-                          <td class="max-texts" (click)="onRowSelectPatient(l)" style="cursor: pointer">
-                            <span>{{l.firstName}} {{l.lastName}}</span>
-                          </td>
-                          <td class="text-right" (click)="onRowSelectPatient(l)" style="cursor: pointer">Occupation: {{l.jobTitle}}</td>
-                        </tr>
-                        </tbody>
-                      </table> -->
                       <p-table [columns]="cols" [value]="lists" selectionMode="single" [(selection)]="selectedAddress" [scrollable]="true" 
                         [responsive]="true" scrollHeight="200px"(onRowSelect)="onRowSelectPatient(1)">
 
@@ -151,13 +103,23 @@
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-rowData let-columns="columns">
-                            <tr class="unread" *ngFor="let l of lists" >
+                            <!-- <tr class="unread" *ngFor="let l of lists" >
                                 <td class="max-texts" (click)="onRowSelectPatient(l)" style="cursor: pointer">
                                   <span><img [src]="getPatientImg(l.photoName)" alt="" width="20"
                                     class="img-circle"/>{{l.firstName}} {{l.lastName}}</span>
                                 </td>
                                 <td class="max-texts" (click)="onRowSelectPatient(l)" style="cursor: pointer">Occupation: {{l.jobTitle}}</td>
-                              </tr>
+                              </tr> -->
+                              <tr class="unread">
+                                  <td *ngFor="let col of columns"   (click)="onRowSelectPatient(rowData)"  style="text-align: center;cursor: pointer">
+                                      <div *ngIf = "col.field==='photoName'">
+                                          <span><img [src]="getPatientImg(rowData[col.field])" alt="" width="20"/></span>
+                                      </div>
+                                      <div *ngIf = "col.field!=='photoName'">
+                                          {{rowData[col.field]}}
+                                      </div>
+                                  </td>
+                                </tr>
                         </ng-template> 
                     </p-table>
             </div>

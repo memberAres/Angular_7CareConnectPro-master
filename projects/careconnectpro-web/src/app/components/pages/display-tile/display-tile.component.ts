@@ -35,6 +35,8 @@ export class DisplayTileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log("sdfsdfsdf");
+    console.log(this.list);
     this.physicianService.physician.isActive = true;
   }
 

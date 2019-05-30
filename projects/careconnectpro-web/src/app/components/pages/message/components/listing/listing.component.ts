@@ -57,7 +57,7 @@ export class ListingComponent implements OnInit {
     this.parseUrlQuery();
     this.getEmployeeNames();
     this.cols = [
-      { field: "firstName", header: "Name" },
+      { field: "name", header: "Name" },
       { field: "subject", header: "Subject" },
       { field: "fileAttachment", header: "Attachment" },
       { field: "dateCreated", header: "Date" }

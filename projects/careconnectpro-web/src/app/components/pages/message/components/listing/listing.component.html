@@ -21,7 +21,7 @@
                     <ng-template pTemplate="header" let-columns>
                         <tr>
                             <th style="width: 3em"></th>
-                            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                            <th *ngFor="let col of columns" [pSortableColumn]="col.field"  style="text-align: center">
                                 {{col.header}}
                                 <p-sortIcon [field]="col.field"></p-sortIcon>
                             </th>
@@ -29,7 +29,7 @@
                     </ng-template>
                     <ng-template pTemplate="body" let-rowData let-columns="columns">
                         <tr class="unread" *ngFor="let item of messageHeaders" >
-                            <td style="width:3em;height:20px;vertical-align: bottom;">
+                            <!-- <td style="width:3em;height:20px;vertical-align: bottom;">
                               <div class="checkbox">
                                 <input type="checkbox" id="{{'checkbox'+item.id}}" value="check" (change)="onChangeCheckbox($event, item.id)">
                                 <label for="{{'checkbox'+item.id}}"></label>
@@ -45,7 +45,30 @@
                             </td>
                             <td class="hidden-xs-down" (click)="viewMessage(item.id)" style="cursor: pointer"><span *ngIf="item.fileAttachment > 0"><i
                               class="fa fa-paperclip"></i></span></td>
-                            <td class="max-texts" (click)="viewMessage(item.id)" style="cursor: pointer"> {{ formatDate(item.dateCreated) }}</td>
+                            <td class="max-texts" (click)="viewMessage(item.id)" style="cursor: pointer"> {{ formatDate(item.dateCreated) }}</td> -->
+                            <td style="width: 3em">
+                              <div class="checkbox">
+                                <input type="checkbox" id="{{'checkbox'+rowData.id}}" value="check" (change)="onChangeCheckbox($event, rowData.id)">
+                                <label for="{{'checkbox'+rowData.id}}"></label>
+                              </div>
+                          </td>
+                          <td *ngFor="let col of columns"  style="text-align: center;cursor: pointer" (click)="viewMessage(rowData.id)">
+                              <div *ngIf = "col.field==='subject'">
+                                  {{rowData[col.field]}}
+                              </div>
+                              <div *ngIf="col.field==='fileAttachment'">
+                                <span *ngIf="rowData.fileAttachment > 0"><i
+                                  class="fa fa-paperclip"></i></span>
+                              </div>
+                              <div *ngIf = "col.field==='dateCreated'">
+                                {{ formatDate(rowData.dateCreated) }}
+                              </div>
+                              <div *ngIf = "col.field==='name'">
+                                    <img [src]="getEmployeeImage(rowData.senderId)" alt="user" width="20"
+                                         class="img-circle"/>
+                                    {{ (rowData.senderName) }}
+                              </div>
+                          </td>
                           </tr>
                     </ng-template> 
                 </p-table>

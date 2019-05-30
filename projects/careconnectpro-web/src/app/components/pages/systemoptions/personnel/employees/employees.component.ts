@@ -128,6 +128,8 @@ export class OrgEmployeesComponent implements OnInit {
     a.style.color = "white";
   }
   public Showtile() {
+    (data: any) => {console.log(data)}
+    console.log("tile")
     this.tabView = 1;
     var d1 = document.getElementById("li1");
     d1.style.backgroundColor = "#007ad9";
@@ -139,6 +141,9 @@ export class OrgEmployeesComponent implements OnInit {
     a2.style.color = "#007ad9";
   }
   public Showlist() {
+    (data: any) => {console.log(data)}
+    console.log("list")
+
     this.tabView = 2;
     var d1 = document.getElementById("li2");
     d1.style.backgroundColor = "#007ad9";

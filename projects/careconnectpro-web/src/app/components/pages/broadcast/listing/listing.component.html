@@ -11,7 +11,8 @@
             <!-- <div class="card b-all shadow-none">
               <div class="inbox-center table-responsive">
                 <table class="table table-hover no-wrap">
-                  <tbody>
+                  
+                  <tbody style="height:200px;overflow-y:scroll">
 
                   <tr class="unread" *ngFor="let item of broadcasts; let i = index">
                     <td style="width:40px">
@@ -51,7 +52,7 @@
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-rowData let-columns="columns">
-                <tr class="unread" *ngFor="let item of broadcasts; let i = index">
+                <!-- <tr class="unread" *ngFor="let item of broadcasts; let i = index">
                     <td style="width:40px">
                       <div class="checkbox">
                         <input type="checkbox" id="{{'checkbox'+i}}" value="check" (change)="onChangeCheckbox(item.id)">
@@ -70,7 +71,33 @@
                     </a>
                     </td>
                     <td class="max-texts"> {{ formatDate(item.dateCreated) }} </td>
-                  </tr>
+                  </tr> -->
+                  <tr class="unread" >
+                      <td style="width: 3em">
+                          <!-- <p-tableCheckbox [value]="rowData"></p-tableCheckbox> -->
+                          <div class="checkbox">
+                            <input type="checkbox" id="{{'checkbox'+rowData.id}}" value="check" (change)="onChangeCheckbox(rowData.id)">
+                            <label for="{{'checkbox'+rowData.id}}"></label>
+                          </div>
+                      </td>
+                      <td *ngFor="let col of columns"  style="text-align: center;cursor: pointer">
+                          <div *ngIf = "col.field==='subject'">
+                              <a [routerLink]="['/home/broadcast/detail/',rowData.id]">
+                              {{rowData[col.field]}}
+                              </a>
+                          </div>
+                          <div *ngIf="col.field==='dateCreated'">
+                            {{ formatDate(rowData.dateCreated) }} 
+                          </div>
+                          <div *ngIf = "col.field==='name'">
+                              <a [routerLink]="['/home/broadcast/detail/',rowData.id]">
+                                <img [src]="getEmployeeImage(rowData.senderId)" alt="user" width="20"
+                                     class="img-circle"/>
+                                {{ getEmployeeFullName(rowData.senderId) }}
+                                </a>
+                          </div>
+                      </td>
+                    </tr>
             </ng-template> 
         </p-table>
           </div>

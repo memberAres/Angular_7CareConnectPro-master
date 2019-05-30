@@ -35,10 +35,13 @@ export class DisplayListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log(this.lists);
     this.physicianService.physician.isActive = true;
     this.cols = [
-      { field: "firstName", header: "Name" },
-      { field: "jobTitle", header: "Title" }
+      { field: "photoName", header: "Useriamge" },
+      { field: "firstName", header: "Firstname" },
+      { field: "lastName", header: "Lastname" },
+      { field: "jobTitle", header: "Occupation" }
     ];
   }
 
@@ -86,9 +89,10 @@ export class DisplayListComponent implements OnInit {
     return imgUrl;
   }
 
-  onRowSelectEmployee(l) {
+  onRowSelectEmployee(col) {
+    console.log(col);
     this.employeeService.isNewEmployee = false;
-    this.employeeService.employee = this.cloneEmployee(l);
+    this.employeeService.employee = this.cloneEmployee(col);
     this.router.navigate(["/home/personnel/employee/detail"]);
   }
 

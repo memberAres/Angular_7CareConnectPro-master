@@ -46,7 +46,10 @@ export class ListingComponent extends BaseComponent implements OnInit {
     }
     this.getLoggedInUserInfo();
     this.cols = [
-      { field: "firstName", header: "Name" },
+      // { field: "photoname", header: "Userimage" },
+      // { field: "firstname", header: "Firstname" },
+      // { field: "lastname", header: "Lastname" },
+      { field: "name", header: "Name" },
       { field: "subject", header: "Subject" },
       { field: "dateCreated", header: "Date" }
     ];
