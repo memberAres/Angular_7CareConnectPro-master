@@ -38,7 +38,7 @@
     "dateformat": "^3.0.3",
     "fontawesome": "^4.7.2",
     "fullcalendar": "^4.0.0-alpha.2",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "ng-bootstrap": "^1.6.3",
     "ng-fullcalendar": "^1.6.2",
     "ng2-search-filter": "^0.4.7",
